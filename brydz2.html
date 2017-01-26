@@ -1,0 +1,202 @@
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="CSS/brydz2.css">
+
+</head>
+<body>
+<div class="container">
+	<div class="wiersz">
+		<div class="waski">
+			<div id="impWE" >0</div>
+			<div id="impNS" >0</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<div class="wiersz">
+		<div class="waski">
+			<div id="WE" onclick="myClick('WE')">WE</div>
+			<div id="NS" onclick="myClick('NS')">NS</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<div class="wiersz">
+			<div id="prev" class="top" onclick="myClick('_prev')">prev</div><div class="top">ROZDANIE</div><div id="next" class="top" onclick="myClick('_next')">next</div>
+			<div class="clear"></div>
+	</div>
+	<div class="wiersz">
+			<div id="nrKontraktu">0</div>
+			<div class="clear"></div>
+	</div>
+
+
+	<div class="wiersz">
+		<div class="waski">
+			<div id="partiaWE" onclick="myClick('partiaWE')">PRZED</div>
+			<div id="partiaNS" onclick="myClick('partiaNS')">PRZED</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<div class="wiersz kontrakty">
+		<div id="Pass" class="kontrakt" onclick="myClick('Pass')">X</div>
+		<div id="C1" class="kontrakt" onclick="myClick('C1')">1&clubs;</div>
+		<div id="C2" class="kontrakt" onclick="myClick('C2')">2&clubs;</div>
+		<div id="C3" class="kontrakt" onclick="myClick('C3')">3&clubs;</div>
+		<div id="C4" class="kontrakt" onclick="myClick('C4')">4&clubs;</div>
+		<div id="C5" class="kontrakt" onclick="myClick('C5')">5&clubs;</div>
+		<div id="C6" class="kontrakt" onclick="myClick('C6')">6&clubs;</div>
+		<div id="C7" class="kontrakt" onclick="myClick('C7')">7&clubs;</div>
+		<div class="clear"></div>
+	</div>
+	<div class="wiersz kontrakty">
+		<div id="Pass2" class="kontrakt noborder hidden" ></div>
+		<div id="D1" class="kontrakt" onclick="myClick('D1')">1&diams;</div>
+		<div id="D2" class="kontrakt" onclick="myClick('D2')">2&diams;</div>
+		<div id="D3" class="kontrakt" onclick="myClick('D3')">3&diams;</div>
+		<div id="D4" class="kontrakt" onclick="myClick('D4')">4&diams;</div>
+		<div id="D5" class="kontrakt" onclick="myClick('D5')">5&diams;</div>
+		<div id="D6" class="kontrakt" onclick="myClick('D6')">6&diams;</div>
+		<div id="D7" class="kontrakt" onclick="myClick('D7')">7&diams;</div>
+		<div class="clear"></div>
+	</div>
+	<div class="wiersz kontrakty">
+		<div id="Pass3" class="kontrakt noborder hidden" ></div>
+		<div id="H1" class="kontrakt" onclick="myClick('H1')">1&hearts;</div>
+		<div id="H2" class="kontrakt" onclick="myClick('H2')">2&hearts;</div>
+		<div id="H3" class="kontrakt" onclick="myClick('H3')">3&hearts;</div>
+		<div id="H4" class="kontrakt" onclick="myClick('H4')">4&hearts;</div>
+		<div id="H5" class="kontrakt" onclick="myClick('H5')">5&hearts;</div>
+		<div id="H6" class="kontrakt" onclick="myClick('H6')">6&hearts;</div>
+		<div id="H7" class="kontrakt" onclick="myClick('H7')">7&hearts;</div>
+		<div class="clear"></div>
+	</div>
+	<div class="wiersz kontrakty">
+		<div id="Pass4" class="kontrakt noborder hidden" ></div>
+		<div id="S1" class="kontrakt" onclick="myClick('S1')">1&spades;</div>
+		<div id="S2" class="kontrakt" onclick="myClick('S2')">2&spades;</div>
+		<div id="S3" class="kontrakt" onclick="myClick('S3')">3&spades;</div>
+		<div id="S4" class="kontrakt" onclick="myClick('S4')">4&spades;</div>
+		<div id="S5" class="kontrakt" onclick="myClick('S5')">5&spades;</div>
+		<div id="S6" class="kontrakt" onclick="myClick('S6')">6&spades;</div>
+		<div id="S7" class="kontrakt" onclick="myClick('S7')">7&spades;</div>
+		<div class="clear"></div>
+	</div>
+	<div class="wiersz kontrakty" >
+		<div id="Pass5" class="kontrakt noborder hidden"></div>
+		<div id="BA1" class="kontrakt" onclick="myClick('BA1')">1BA</div>
+		<div id="BA2" class="kontrakt" onclick="myClick('BA2')">2BA</div>
+		<div id="BA3" class="kontrakt" onclick="myClick('BA3')">3BA</div>
+		<div id="BA4" class="kontrakt" onclick="myClick('BA4')">4BA</div>
+		<div id="BA5" class="kontrakt" onclick="myClick('BA5')">5BA</div>
+		<div id="BA6" class="kontrakt" onclick="myClick('BA6')">6BA</div>
+		<div id="BA7" class="kontrakt" onclick="myClick('BA7')">7BA</div>
+		<div class="clear"></div>
+	</div>
+	<div class="wiersz">
+		<div id="kontra" onclick="myClick('kontra')">X</div>
+		<div id="rekontra" onclick="myClick('rekontra')">XX</div>
+		<div class="clear"></div>
+	</div>
+
+	<div class="wiersz">
+			<h2>LEWY</h2>
+			<div class="clear"></div>
+	</div>
+	<div class="wiersz kontrakty lewy">
+		<div id="l0" class="kontrakt" onclick="myClick('l0')">0</div>
+		<div id="l1" class="kontrakt" onclick="myClick('l1')">1</div>
+		<div id="l2" class="kontrakt" onclick="myClick('l2')">2</div>
+		<div id="l3" class="kontrakt" onclick="myClick('l3')">3</div>
+		<div id="l4" class="kontrakt" onclick="myClick('l4')">4</div>
+		<div id="l5" class="kontrakt" onclick="myClick('l5')">5</div>
+		<div id="l6" class="kontrakt" onclick="myClick('l6')">6</div>
+		<div id="l7" class="kontrakt" onclick="myClick('l7')">7</div>
+		<div class="clear"></div>
+	</div>
+	<div class="wiersz lewy kontrakty">
+		<div id="l14" class="kontrakt noborder hidden" ></div>
+		<div id="l8" class="kontrakt" onclick="myClick('l8')">8</div>
+		<div id="l9" class="kontrakt" onclick="myClick('l9')">9</div>
+		<div id="l10" class="kontrakt" onclick="myClick('l10')">10</div>
+		<div id="l11" class="kontrakt" onclick="myClick('l11')">11</div>
+		<div id="l12" class="kontrakt" onclick="myClick('l12')">12</div>
+		<div id="l13" class="kontrakt" onclick="myClick('l13')">13</div>
+		<div id="l15" class="kontrakt noborder hidden" ></div>
+		<div class="clear"></div>
+	</div>
+	<div class="wiersz">
+			<h2>PUNKTY</h2>
+			<div class="clear"></div>
+	</div>
+	<div class="wiersz kontrakty punkty">
+		<div id="p1" class="kontrakt" onclick="myClick('p1')">1</div>
+		<div id="p2" class="kontrakt" onclick="myClick('p2')">2</div>
+		<div id="p3" class="kontrakt" onclick="myClick('p3')">3</div>
+		<div id="p4" class="kontrakt" onclick="myClick('p4')">4</div>
+		<div id="p5" class="kontrakt" onclick="myClick('p5')">5</div>
+		<div id="p6" class="kontrakt" onclick="myClick('p6')">6</div>
+		<div id="p7" class="kontrakt" onclick="myClick('p7')">7</div>
+		<div id="p8" class="kontrakt" onclick="myClick('p8')">8</div>
+		<div class="clear"></div>
+	</div>
+	<div class="wiersz kontrakty punkty">
+		<div id="p9" class="kontrakt" onclick="myClick('p9')">9</div>
+		<div id="p10" class="kontrakt" onclick="myClick('p10')">10</div>
+		<div id="p11" class="kontrakt" onclick="myClick('p11')">11</div>
+		<div id="p12" class="kontrakt" onclick="myClick('p12')">12</div>
+		<div id="p13" class="kontrakt" onclick="myClick('p13')">13</div>
+		<div id="p14" class="kontrakt" onclick="myClick('p14')">14</div>
+		<div id="p15" class="kontrakt" onclick="myClick('p15')">15</div>
+		<div id="p16" class="kontrakt" onclick="myClick('p16')">16</div>
+		<div class="clear"></div>
+	</div>
+	<div class="wiersz kontrakty punkty">
+		<div id="p17" class="kontrakt" onclick="myClick('p17')">17</div>
+		<div id="p18" class="kontrakt" onclick="myClick('p18')">18</div>
+		<div id="p19" class="kontrakt" onclick="myClick('p19')">19</div>
+		<div id="p20" class="kontrakt" onclick="myClick('p20')">20</div>
+		<div id="p21" class="kontrakt" onclick="myClick('p21')">21</div>
+		<div id="p22" class="kontrakt" onclick="myClick('p22')">22</div>
+		<div id="p23" class="kontrakt" onclick="myClick('p23')">23</div>
+		<div id="p24" class="kontrakt" onclick="myClick('p24')">24</div>
+		<div class="clear"></div>
+	</div>
+	<div class="wiersz kontrakty  punkty">
+		<div id="p25" class="kontrakt" onclick="myClick('p25')">25</div>
+		<div id="p26" class="kontrakt" onclick="myClick('p26')">26</div>
+		<div id="p27" class="kontrakt" onclick="myClick('p27')">27</div>
+		<div id="p28" class="kontrakt" onclick="myClick('p28')">28</div>
+		<div id="p29" class="kontrakt" onclick="myClick('p29')">29</div>
+		<div id="p30" class="kontrakt" onclick="myClick('p30')">30</div>
+		<div id="p31" class="kontrakt" onclick="myClick('p31')">31</div>
+		<div id="p32" class="kontrakt" onclick="myClick('p32')">32</div>
+		<div class="clear"></div>
+	</div>
+	<div class="wiersz kontrakty punkty">
+		<div id="p33" class="kontrakt" onclick="myClick('p33')">33</div>
+		<div id="p34" class="kontrakt" onclick="myClick('p34')">34</div>
+		<div id="p35" class="kontrakt" onclick="myClick('p35')">35</div>
+		<div id="p36" class="kontrakt" onclick="myClick('p36')">36</div>
+		<div id="p37" class="kontrakt" onclick="myClick('p37')">37</div>
+		<div id="p38" class="kontrakt" onclick="myClick('p38')">38</div>
+		<div id="p39" class="kontrakt" onclick="myClick('p39')">39</div>
+		<div id="p40" class="kontrakt" onclick="myClick('p40')">40</div>
+		<div class="clear"></div>
+	</div>
+
+	<div class="wiersz">
+			<h2>WYNIK</h2>
+			<div id="punktyIMP">WE:2</div>
+			<div id="zapisz" onclick="myClick('zapisz')">Zapisz kontrakt</div>
+			<h2 id="wynik"></h2>
+			<div class="clear"></div>
+	</div>
+	<div class="wiersz">
+			<h2 id="reset" onclick="myClear(0)">RESET meczu</h2>
+			<div class="clear"></div>
+	</div>
+
+</div>
+<script src="JS/brydz2.js" ></script>
+</body>
+</html>

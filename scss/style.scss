@@ -1,0 +1,112 @@
+$smallerFont : 0.7em;
+body {
+  font-size: 30px;
+}
+section.player {
+  text-align: center;
+
+  h1 {
+
+  }
+
+  .NSvulnarable, .WEvulnarable {
+    width : 100px;
+    min-height :50px;
+    background: green;
+    font-size: 1.2em;
+    margin : 10px;
+    color : white;
+  }
+}
+
+.playersVulnarable, .NSvulnarable, .WEvulnarable, .playerName {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.playerName {
+  width : 100%;
+  height :100px;
+  background: green;
+  font-size: 1.2em;
+
+  color : white;
+}
+.scoreTable {
+  background-color : black ;
+  color : grey;
+  text-align: center;
+  .number {
+    font-size: $smallerFont;
+  }
+  .oponent {
+    text-decoration: line-through;
+    font-size: $smallerFont;
+  }
+  .vulnerable {
+    &.player {
+      color : red;
+      font-weight: bold;
+    }
+    &.oponent {
+      color : red;
+
+    }
+  }
+  .notvulnerable {
+    &.player {
+      color : green;
+      font-weight: bold;
+    }
+    &.oponent {
+      color : green;
+
+    }
+  }
+  .undoubled::after {
+    content: '.';
+    font-size: $smallerFont;
+  }
+  .doubled::after {
+    content: 'x';
+    font-size: $smallerFont;
+  }
+  .redoubled::after {
+    content: 'xx';
+    font-size: $smallerFont;
+  }
+  .handPoints::after {
+    content: 'p';
+    font-size: $smallerFont;
+  }
+  .overtricks::after {
+    content: '(+2)';
+    font-size: $smallerFont;
+  }
+  .winPoints {
+    font-size: $smallerFont;
+  }
+  .impPoints {
+    font-size: 1.1em;
+    color : red;
+  }
+  .NStotalImpPoints::before {
+    content: 'NS:';
+    font-size: $smallerFont;
+  }
+  .WEtotalImpPoints::before {
+    content: 'WE:';
+    font-size: $smallerFont;
+  }
+
+}
+
+
+.doubledX, .redoubledX {
+  background: red;
+  min-height: 150px;
+  transform-origin: bottom left;
+
+
+}

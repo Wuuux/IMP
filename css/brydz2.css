@@ -1,0 +1,266 @@
+body {
+  margin:0;
+  padding:0;
+  background: black;
+  box-sizing: border-box;
+  text-align: center;
+  color : white;
+  font-size: 16px;
+}
+
+.container {
+  width: 620px;
+  height: 1000px;
+  background: black;
+  margin : 50px auto;
+}
+
+.clear {
+  clear : both;
+}
+
+.wiersz {
+  width : 100%;
+  background: black;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.waski {
+  width : 80%;
+  margin: 0 auto;
+}
+
+#impWE {
+  float : left;
+  width : 200px;
+  color : white;
+  font-weight: bold;
+  font-size: 40px;
+  height: 50px;
+  background: black;
+  text-align: center;
+  margin-top: 10px;
+  padding: 0px;
+  border-radius: 25px;
+  margin : 5px;
+  border : 2px solid white;
+}
+
+#impNS {
+  float : right;
+  width : 200px;
+  color : white;
+  font-weight: bold;
+  font-size: 40px;
+  height: 50px;
+  background: black;
+  text-align: center;
+  margin-top: 10px;
+  padding: 0px;
+  border-radius: 25px;
+  margin : 5px;
+  border : 2px solid white;
+}
+
+#WE {
+  float : left;
+  width : 200px;
+  color : white;
+  font-weight: bold;
+  font-size: 40px;
+  height: 50px;
+  background: black;
+  text-align: center;
+  margin-top: 10px;
+  padding: 0px;
+  border-radius: 25px;
+  margin : 5px;
+  border : 2px solid white;
+  }
+
+#NS {
+  float : right;
+  width : 200px;
+  color : grey;
+  font-weight: bold;
+  font-size: 40px;
+  height: 50px;
+  background: black;
+  text-align: center;
+  margin-top: 10px;
+  padding: 0px;
+  border-radius: 25px;
+  margin : 5px;
+  border : 2px solid black;
+}
+
+#partiaWE {
+  float : left;
+  width : 200px;
+  color : white;
+  font-weight: bold;
+  font-size: 40px;
+  height: 48px;
+  background: green;
+  text-align: center;
+  margin-top: 10px;
+  padding: 0px;
+  border-radius: 25px;
+  margin : 5px;
+  padding-top: 2px;
+}
+
+#partiaNS {
+  float : right;
+  width : 200px;
+  color : white;
+  font-weight: bold;
+  font-size: 40px;
+  height: 48px;
+  background: green;
+  text-align: center;
+  margin-top: 10px;
+  padding: 0px;
+  border-radius: 25px;
+  margin : 5px;
+  padding-top: 2px;
+}
+
+.lewy {
+  color : red;
+  border : red;
+}
+
+.kontrakt {
+  width : 40px;
+  height : 29px;
+  border-radius: 40px;
+  border : 2px solid white;
+  color : white;
+  font-size: 16px;
+  text-align: center;
+  float: left;
+  background: black;
+  padding-top: 11px;
+  margin: 4px 9px;
+    font-weight: bolder;
+  transform: scale(1.6,1.6);
+}
+
+.kontrakty {
+  width : 80%;
+  margin: 0 auto;
+  color : yellow;
+  border : yellow;
+}
+
+#kontra, #rekontra {
+  float : left;
+  width : 300px;
+  color : grey;
+  font-weight: bold;
+  font-size: 40px;
+  height: 50px;
+  background: black;
+  text-align: center;
+  margin-top: 10px;
+  padding: 0px;
+  border-radius: 25px;
+  margin : 5px;
+}
+
+div.punkty > div{
+  color : yellow;
+    font-weight: bolder;
+}
+
+div.lewy > div{
+  color : yellow;
+
+  font-weight: bolder;
+}
+
+#punktyIMP {
+  font-size: 100px;
+  color : red;
+  border-radius: 200px;
+  border: 3px solid red;
+  width:450px;
+  height: 140px;
+  margin: 0 auto;
+  padding-top: 20px;
+}
+
+table,tr,td {
+  text-align: center;
+  border: 1px solid grey;
+  font-size: 30px;
+padding: 3px;
+align-content: center;
+align-items: center;
+}
+
+table {
+  margin-top: 40px;
+}
+
+.noborder {
+  border: 2px solid black;
+}
+
+.kontrakt:hover {
+  background: yellow;
+  transform: scale(2,2);
+  transition: 0.1s;
+}
+
+#WE:hover, #NS:hover, #partiaWE:hover, #partiaNS:hover, #prev:hover, #next:hover, #kontra:hover, #rekontra:hover, #zapisz:hover {
+
+  transform: scale(1.2,1.2);
+  transition: 0.1s;
+}
+
+.hidden {
+  visibility: hidden;
+}
+#zapisz {
+  font-size: 40px;
+  color : yellow;
+  border-radius: 200px;
+  width:250px;
+  height: 30px;
+  margin: 5px auto;
+  padding-top: 20px;
+}
+
+#nrKontraktu {
+  font-size: 40px;
+  color : yellow;
+  border-radius: 200px;
+  width:250px;
+  height: 30px;
+  margin: 0px auto;
+}
+
+.top {
+  width : 200px;
+  height: 30px;
+  color : white;
+  float: left;
+  margin: 0 3px;
+  font-size: 30px;
+}
+
+#reset {
+  font-size: 40px;
+  color : red;
+  border-radius: 200px;
+  width:250px;
+  height: 30px;
+  margin: 0px auto;
+}
+
+#reset:hover{
+  color : grey;
+}
