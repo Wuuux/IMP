@@ -42,7 +42,7 @@ section.player .NSvulnarable, section.player .WEvulnarable { width: 100px; min-h
 
 .doubledX, .redoubledX { background: red; min-height: 150px; transform-origin: bottom left; }
 
-section.player img { width:100%; margin-top: 10px}
+section.player img { width:100%; margin-top: 80px}
 section.player span { width:14.285714285714285714285714285714%; padding: 0 5px; background: lightgrey; display: block;float: left;}
 .navTable {width : 100%; position : fixed; z-index: 1}
 
