@@ -13,11 +13,12 @@ section.player {
     width : 100px;
     min-height :50px;
     background: green;
-    font-size: 1.2em;
+    font-size: 0.9em;
     margin : 10px;
     color : white;
   }
 }
+
 
 .playersVulnarable, .NSvulnarable, .WEvulnarable, .playerName {
   display: flex;
@@ -29,8 +30,8 @@ section.player {
   width : 100%;
   height :100px;
   background: green;
-  font-size: 1.2em;
-
+  font-size: 1.6em;
+  font-weight: bold;
   color : white;
 }
 .scoreTable {
@@ -39,6 +40,9 @@ section.player {
   text-align: center;
   .number {
     font-size: $smallerFont;
+    &::after {
+      content: '.';
+    }
   }
   .oponent {
     text-decoration: line-through;
@@ -109,4 +113,23 @@ section.player {
   transform-origin: bottom left;
 }
 
-section.player img { width:100%}
+
+section.player img {
+  width:100%;
+  margin-top: 80px
+}
+
+section.player span {
+  width:14.285714285714285714285714285714%;
+  padding: 0 5px;
+  background: lightgrey;
+  display: block;
+  float: left;
+}
+.navTable {width : 100%; position : fixed; z-index: 1}
+
+.playerName, .NSvulnarable, .WEvulnarable {
+  &:hover {
+    transform: scale(1.1,1.1);
+  }
+}
