@@ -1,7 +1,11 @@
 $smallerFont : 0.7em;
 body {
   font-size: 30px;
+  @media only screen and (max-width: 500px) {
+    font-size: 14px;
+  }
 }
+
 section.player {
   text-align: center;
 
