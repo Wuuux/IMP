@@ -98,6 +98,7 @@ $(document).ready(function(){
       };
 
       spans.eq(6).text(this.handPoints);
+      spans.eq(8).text(this.impPoints);
 
 
       // if (ns)
@@ -252,11 +253,45 @@ $(document).ready(function(){
         if (i<10) $spanNumbers.eq(i-1).text('0'+i)
         else $spanNumbers.eq(i-1).text(i);
       };
+      recountTotalSums();
       game0.nr = $spanNumbers.length+1;
       game0.print();
       console.log($spanNumbers);
 
   }
+
+  function recountTotalSums(){
+    var $savedNS = $('.saved').find('span.NStotalImpPoints');
+    var $savedWE = $('.saved').find('span.WEtotalImpPoints');
+    var $savedPlayer = $('.saved').find('span.player');
+    var $savedImpPoints = $('.saved').find('span.impPoints');
+    var sumNS = 0;
+    var sumWE = 0;
+    console.log('savedNS',$savedNS);
+    console.log('savedWE',$savedWE);
+    console.log('savedPlayer',$savedPlayer);
+    console.log('savedImpPoints',$savedImpPoints);
+
+    for (var i=0;i < $savedNS.length;i++){
+      if (($savedPlayer.eq(i).text() == 'NS') && ($savedImpPoints.eq(i).text() >= 0)) {
+        sumNS = parseInt(sumNS) + parseInt($savedImpPoints.eq(i).text());
+        console.log('sumNS',sumNS);
+      };
+      if (($savedPlayer.eq(i).text() == 'NS') && (parseInt($savedImpPoints.eq(i).text()) < 0)) {
+        sumWE -= parseInt($savedImpPoints.eq(i).text());
+      }
+      if (($savedPlayer.eq(i).text() == 'WE') && (parseInt($savedImpPoints.eq(i).text()) >= 0)) {
+        sumWE += parseInt($savedImpPoints.eq(i).text());
+      };
+      if (($savedPlayer.eq(i).text() == 'WE') && (parseInt($savedImpPoints.eq(i).text()) < 0)) {
+        sumNS -= parseInt($savedImpPoints.eq(i).text());
+      };
+      $savedNS.eq(i).text(parseInt(sumNS));
+      $savedWE.eq(i).text(sumWE);
+
+    };
+
+  };
 
 
 
