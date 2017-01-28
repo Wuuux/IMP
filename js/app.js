@@ -172,8 +172,9 @@ $(document).ready(function(){
 
     game0.print();
   });
-
-  $('[data-doubled]').on('click',function(){
+  console.log($('div[data-doubled]'));
+  $('div[data-doubled]').on('click',function(){
+    console.log('click');
     if (game0.levelContract > 0) {
         if ($(this).data('doubled') == 'no') {
           $(this).data('doubled','yes');
@@ -191,7 +192,7 @@ $(document).ready(function(){
     }
   });
 
-  $('[data-redoubled]').on('click',function(){
+  $('div[data-redoubled]').on('click',function(){
     if (game0.levelContract > 0) {
 
             if ($('[data-doubled]').data('doubled') == 'yes') {
