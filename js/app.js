@@ -56,6 +56,24 @@ $(document).ready(function(){
     this.print = function (){
       console.log(this);
       var spans = $('section.scoreTable.navTable').find('span');
+      spans.eq(0).text(this.nr);
+      spans.eq(1).text(this.player);
+
+      if (this.player == 'NS') spans.eq(2).text('WE')
+      else spans.eq(2).text('NS');
+
+      if ((this.player == 'NS') && (this.nsVulnarable==true)) spans.eq(1).removeClass('notvulnarable').addClass('vulnarable');
+      if ((this.player == 'NS') && (this.nsVulnarable==false)) spans.eq(1).removeClass('vulnarable').addClass('notvulnarable');
+      if ((this.player == 'WE') && (this.weVulnarable==true)) spans.eq(1).removeClass('notvulnarable').addClass('vulnarable');
+      if ((this.player == 'WE') && (this.weVulnarable==false)) spans.eq(1).removeClass('vulnarable').addClass('notvulnarable');
+      if ((this.player == 'NS') && (this.weVulnarable==true)) spans.eq(2).removeClass('notvulnarable').addClass('vulnarable');
+      if ((this.player == 'NS') && (this.weVulnarable==false)) spans.eq(2).removeClass('vulnarable').addClass('notvulnarable');
+      if ((this.player == 'WE') && (this.nsVulnarable==true)) spans.eq(2).removeClass('notvulnarable').addClass('vulnarable');
+      if ((this.player == 'WE') && (this.nsVulnarable==false)) spans.eq(2).removeClass('vulnarable').addClass('notvulnarable');
+
+      // if (ns)
+      // spans.eq(2).text(this.nr);
+      // spans.eq(3).text(this.nr);
       console.log(spans);
       // spans[0].text(this.nr);
       // spans[1].text(this.player);
@@ -79,7 +97,7 @@ $(document).ready(function(){
       if (game0.nsVulnarable == true) $(this).css('background', 'red')
       else $(this).css('background', 'green');
     };
-
+    game0.print();
   });
 
   $('.NSvulnarable').on('click',function(){
@@ -92,6 +110,7 @@ $(document).ready(function(){
     };
     if ((game0.nsVulnarable) && (game0.player == 'NS')) $('.playerName').css('background','red');
     if ((game0.nsVulnarable == false) && (game0.player == 'NS')) $('.playerName').css('background','green')
+    game0.print();
   });
 
   $('.WEvulnarable').on('click',function(){
@@ -104,6 +123,7 @@ $(document).ready(function(){
     }
     if ((game0.weVulnarable) && (game0.player == 'WE')) $('.playerName').css('background','red');
     if ((game0.weVulnarable == false) && (game0.player == 'WE')) $('.playerName').css('background','green');
+    game0.print();
   });
 
 

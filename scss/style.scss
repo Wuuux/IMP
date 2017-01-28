@@ -48,17 +48,16 @@ section.player {
     text-decoration: line-through;
     font-size: $smallerFont;
   }
-  .vulnerable {
+  .vulnarable {
     &.player {
       color : red;
       font-weight: bold;
     }
     &.oponent {
       color : red;
-
     }
   }
-  .notvulnerable {
+  .notvulnarable {
     &.player {
       color : green;
       font-weight: bold;
