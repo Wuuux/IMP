@@ -17,14 +17,16 @@
     <span class='player notvulnarable'>NS</span>
     :
     <span class='oponent notvulnarable'>WE</span>
-    <span class='contract doubled'>1&hearts;</span>
-    <span class='handPoints'>20</span>
-    <span class='tricks overtricks'>9</span>
+    <span class='contract undoubled'>pass</span>
 
-    <span class='winPoints'>600</span>
-    <span class='impPoints'>+4</span> ||
-    <span class='NStotalImpPoints'>4</span>
-    <span class='WEtotalImpPoints'>4</span>
+    <span class='tricks'>0</span>
+    <span class='overtricks'>0</span>
+    <span class='handPoints'>20</span>
+
+    <span class='winPoints'>0</span>
+    <span class='impPoints'>0</span> ||
+    <span class='NStotalImpPoints'>0</span>
+    <span class='WEtotalImpPoints'>0</span>
   </section>
 
 	<section class='player container-fluid'>
@@ -47,58 +49,65 @@
         <h1>CONTRACT</h1>
       </div>
       <div class='col-sm-12 col-md-12 col-lg-12'>
-        <span>1&clubs;</span><span>2&clubs;</span><span>3&clubs;</span><span>4&clubs;</span><span>5&clubs;</span><span>6&clubs;</span><span>7&clubs;</span>
+        <span data-contract='1_clubs'>1&clubs;</span><span data-contract='2_clubs'>2&clubs;</span><span data-contract='3_clubs'>3&clubs;</span><span data-contract='4_clubs'>4&clubs;</span><span data-contract='5_clubs'>5&clubs;</span><span data-contract='6_clubs'>6&clubs;</span><span data-contract='7_clubs'>7&clubs;</span>
       </div>
       <div class='col-sm-12 col-md-12 col-lg-12'>
-        <span>1&diams;</span><span>2&diams;</span><span>3&diams;</span><span>4&diams;</span><span>5&diams;</span><span>6&diams;</span><span>7&diams;</span>
+        <span data-contract='1_diams'>1&diams;</span><span data-contract='2_diams'>2&diams;</span><span data-contract='3_diams'>3&diams;</span><span data-contract='4_diams'>4&diams;</span><span data-contract='5_diams'>5&diams;</span><span data-contract='6_diams'>6&diams;</span><span data-contract='7_diams'>7&diams;</span>
       </div>
       <div class='col-sm-12 col-md-12 col-lg-12'>
-        <span>1&hearts;</span><span>2&hearts;</span><span>3&hearts;</span><span>4&hearts;</span><span>5&hearts;</span><span>6&hearts;</span><span>7&hearts;</span>
+        <span data-contract='1_hearts'>1&hearts;</span><span data-contract='2_hearts'>2&hearts;</span><span data-contract='3_hearts'>3&hearts;</span><span data-contract='4_hearts'>4&hearts;</span><span data-contract='5_hearts'>5&hearts;</span><span data-contract='6_hearts'>6&hearts;</span><span data-contract='7_hearts'>7&hearts;</span>
       </div>
       <div class='col-sm-12 col-md-12 col-lg-12'>
-        <span>1&spades;</span><span>2&spades;</span><span>3&spades;</span><span>4&spades;</span><span>5&spades;</span><span>6&spades;</span><span>7&spades;</span>
+        <span data-contract='1_spades'>1&spades;</span><span data-contract='2_spades'>2&spades;</span><span data-contract='3_spades'>3&spades;</span><span data-contract='4_spades'>4&spades;</span><span data-contract='5_spades'>5&spades;</span><span data-contract='6_spades'>6&spades;</span><span data-contract='7_spades'>7&spades;</span>
       </div>
       <div class='col-sm-12 col-md-12 col-lg-12'>
-        <span>1NT</span><span>2NT</span><span>3NT</span><span>4NT</span><span>5NT</span><span>6NT</span><span>7NT</span>
+        <span data-contract='1_NT'>1NT</span><span data-contract='2_NT'>2NT</span><span data-contract='3_NT'>3NT</span><span data-contract='4_NT'>4NT</span><span data-contract='5_NT'>5NT</span><span data-contract='6_NT'>6NT</span><span data-contract='7_NT'>7NT</span>
       </div>
-      <div class='col-sm-6 col-md-6 col-lg-6'>
-        doubled
-      </div>
-      <div class='col-sm-6 col-md-6 col-lg-6'>
-        redoubled
-      </div>
-
-      <div class='col-sm-12 col-md-12 col-lg-12'>
-        <h1>HAND POINTS</h1>
-      </div>
-      <div class='col-sm-12 col-md-12 col-lg-12'>
-        <span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span>
-      </div>
-      <div class='col-sm-12 col-md-12 col-lg-12'>
-        <span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span>
-      </div>
-      <div class='col-sm-12 col-md-12 col-lg-12'>
-        <span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span>
-      </div>
-      <div class='col-sm-12 col-md-12 col-lg-12'>
-        <span>21</span><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span>
-      </div>
-      <div class='col-sm-12 col-md-12 col-lg-12'>
-        <span>28</span><span>29</span><span>30</span><span>31</span><span>32</span><span>33</span><span>34</span>
-      </div>
-      <div class='col-sm-12 col-md-12 col-lg-12'>
-        <span>35</span><span>36</span><span>37</span><span>38</span><span>39</span><span>40</span><span>0</span>
+      <div class='row'>
+        <div class='col-sm-4 col-md-4 col-lg-4'>
+          <p  data-contract='0_pass'>4 x PASS</p>
+        </div>
+        <div class='col-sm-4 col-md-4 col-lg-4'>
+          <p data-doubled='no'>doubled</p>
+        </div>
+        <div class='col-sm-4 col-md-4 col-lg-4'>
+          <p data-redoubled='no'>redoubled</p>
+        </div>
       </div>
 
       <div class='col-sm-12 col-md-12 col-lg-12'>
         <h1>TRICKS</h1>
       </div>
       <div class='col-sm-12 col-md-12 col-lg-12'>
-        <span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span>
+        <span data-tricks='0'>0</span><span data-tricks='1'>1</span><span data-tricks='2'>2</span><span data-tricks='3'>3</span><span data-tricks='4'>4</span><span data-tricks='5'>5</span><span data-tricks='6'>6</span>
       </div>
       <div class='col-sm-12 col-md-12 col-lg-12'>
-        <span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span>
+        <span data-tricks='7'>7</span><span data-tricks='8'>8</span><span data-tricks='9'>9</span><span data-tricks='10'>10</span><span data-tricks='11'>11</span><span data-tricks='12'>12</span><span data-tricks='13'>13</span>
       </div>
+
+      <div class='col-sm-12 col-md-12 col-lg-12'>
+        <h1>HAND POINTS</h1>
+      </div>
+      <div class='col-sm-12 col-md-12 col-lg-12'>
+        <span data-handpoints='0'>0</span><span data-handpoints='1'>1</span><span data-handpoints='2'>2</span><span data-handpoints='3'>3</span><span data-handpoints='4'>4</span><span data-handpoints='5'>5</span><span data-handpoints='6'>6</span>
+      </div>
+      <div class='col-sm-12 col-md-12 col-lg-12'>
+        <span data-handpoints='7'>7</span><span data-handpoints='8'>8</span><span data-handpoints='9'>9</span><span data-handpoints='10'>10</span><span data-handpoints='11'>11</span><span data-handpoints='12'>12</span><span data-handpoints='13'>13</span>
+      </div>
+      <div class='col-sm-12 col-md-12 col-lg-12'>
+        <span data-handpoints='14'>14</span><span data-handpoints='15'>15</span><span data-handpoints='16'>16</span><span data-handpoints='17'>17</span><span data-handpoints='18'>18</span><span data-handpoints='19'>19</span><span data-handpoints='20'>20</span>
+      </div>
+      <div class='col-sm-12 col-md-12 col-lg-12'>
+        <span data-handpoints='21'>21</span><span data-handpoints='22'>22</span><span data-handpoints='23'>23</span><span data-handpoints='24'>24</span><span data-handpoints='25'>25</span><span data-handpoints='26'>26</span><span data-handpoints='27'>27</span>
+      </div>
+      <div class='col-sm-12 col-md-12 col-lg-12'>
+        <span data-handpoints='28'>28</span><span data-handpoints='29'>29</span><span data-handpoints='30'>30</span><span data-handpoints='31'>31</span><span data-handpoints='32'>32</span><span data-handpoints='33'>33</span><span data-handpoints='34'>34</span>
+      </div>
+      <div class='col-sm-12 col-md-12 col-lg-12'>
+        <span data-handpoints='35'>35</span><span data-handpoints='36'>36</span><span data-handpoints='37'>37</span><span data-handpoints='38'>38</span><span data-handpoints='39'>39</span><span data-handpoints='40'>40</span><span data-handpoints='0'>0</span>
+      </div>
+
+
     </div>
 
   </section>
