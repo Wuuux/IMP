@@ -5,13 +5,11 @@ body {
     font-size: 14px;
   }
 }
-
-section.player {
+section {
   text-align: center;
+}
+section.player {
 
-  h1 {
-
-  }
 span,p {
   &:hover {
   transform: scale(1.1,1);
@@ -50,7 +48,8 @@ p {
 .scoreTable {
   background-color : black ;
   color : grey;
-  text-align: center;
+  text-align: left;
+  padding-left: 20%;
   .number {
     font-size: $smallerFont;
     &::after {
@@ -155,4 +154,21 @@ section.player span {
   &:hover {
     transform: scale(1.1,1.1);
   }
+}
+
+.save {
+  h1 {
+    background: lightgrey;
+    &:hover {
+      background : grey;
+      color : red;
+    }
+  }
+}
+
+.edit, .delete {
+  padding: 0 20px;
+  margin: 0 10px;
+  background: lightgrey;
+  border-radius: 30px;
 }

@@ -56,10 +56,10 @@ $(document).ready(function(){
 
       }
     };
-
+    var spans = $('section.scoreTable.navTable').find('span');
     this.print = function (){
 
-      var spans = $('section.scoreTable.navTable').find('span');
+
       spans.eq(0).text(this.nr);
       spans.eq(1).text(this.player);
 
@@ -229,6 +229,35 @@ $(document).ready(function(){
     game0.print();
 
   });
+
+  $('.save h1').on('click',function(){
+    var $copy = $('section.scoreTable.navTable').clone();
+    $copy.removeClass('navTable').addClass('saved');
+    if (game0.nr < 10) $copy.find('span').eq(0).text("0"+game0.nr);
+    $copy.css('border-bottom','1px solid lightgrey');
+    $copy.append($("<span class='edit'>EDIT</span><span class='delete'>DELETE</span>"));
+
+    $copy.find('.delete').on('click',deleteSavedBar);
+
+    $copy.appendTo($('body'));
+
+    game0.init(++game0.nr,'NS',false,false,0,'pass', false, false, 20, 6);
+    game0.print();
+  });
+
+  function deleteSavedBar(){
+      $(this).parent().remove();
+      var $spanNumbers = $('.saved').find('span.number');
+      for (var i=1;i <= $spanNumbers.length;i++){
+        if (i<10) $spanNumbers.eq(i-1).text('0'+i)
+        else $spanNumbers.eq(i-1).text(i);
+      };
+      game0.nr = $spanNumbers.length+1;
+      game0.print();
+      console.log($spanNumbers);
+
+  }
+
 
 
 });
