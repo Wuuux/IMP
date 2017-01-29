@@ -75,9 +75,20 @@ $(document).ready(function(){
       if ((this.player == 'WE') && (this.nsVulnarable==true)) spans.eq(2).removeClass('notvulnarable').addClass('vulnarable');
       if ((this.player == 'WE') && (this.nsVulnarable==false)) spans.eq(2).removeClass('vulnarable').addClass('notvulnarable');
 
-      if (this.levelContract == 0) spans.eq(3).html('pass')
-      else if (this.colorContract == 'NT')  spans.eq(3).html(this.levelContract+'NT')
-           else spans.eq(3).html(this.levelContract+'&'+this.colorContract+';');
+      if (parseInt(this.levelContract) == 0) {
+        spans.eq(3).html('pass');
+        spans.eq(3).data('color','pass');
+        // console.log('pass',spans.eq(3).data('color'));
+      } else if (this.colorContract == 'NT')  {
+                  spans.eq(3).html(this.levelContract+'NT');
+                  spans.eq(3).data('color','NT');
+                  // console.log('nt',spans.eq(3).data('color'));
+             } else {
+               spans.eq(3).html(this.levelContract+'&'+this.colorContract+';');
+               spans.eq(3).data('color',this.colorContract);
+              //  console.log('kolor',spans.eq(3).data('color'));
+             };
+      console.log('spans',spans);
       if (this.doubled == true) spans.eq(3).addClass('doubled')
       else spans.eq(3).removeClass('doubled');
       if (this.redoubled == true) spans.eq(3).removeClass('doubled').addClass('redoubled')
@@ -104,7 +115,7 @@ $(document).ready(function(){
       // if (ns)
       // spans.eq(2).text(this.nr);
       // spans.eq(3).text(this.nr);
-      console.log(this);
+      console.log('print', this, spans.eq(3).data('color'));
       // spans[0].text(this.nr);
       // spans[1].text(this.player);
       // spans[2].text();
@@ -173,9 +184,8 @@ $(document).ready(function(){
 
     game0.print();
   });
-  console.log($('div[data-doubled]'));
+
   $('div[data-doubled]').on('click',function(){
-    console.log('click');
     if (game0.levelContract > 0) {
         if ($(this).data('doubled') == 'no') {
           $(this).data('doubled','yes');
@@ -239,6 +249,65 @@ $(document).ready(function(){
     $copy.append($("<span class='edit'>EDIT</span><span class='delete'>DELETE</span>"));
 
     $copy.find('.delete').on('click',deleteSavedBar);
+
+    $copy.find('.edit').on('click',function(){
+      var _nr             = parseInt($(this).parent().find('.number').eq(0).text());
+      var _player         = $(this).parent().find('.player').eq(0).text();
+      console.log('player',$(this).parent().find('.player').eq(0).text());
+      var _nsVulnarable;
+      var _weVulnarable;
+      var _levelContract;
+      var _colorContract;
+      var _double;
+      var _redouble;
+      var _handPoints;
+      var _tricks;
+
+      var $player  = $(this).parent().find('.player').eq(0);
+      var $oponent = $(this).parent().find('.oponent').eq(0);
+      if ($player.text() == 'NS') {
+        _nsVulnarable = $player.hasClass('vulnarable');
+      } else {
+        _weVulnarable = $player.hasClass('vulnarable');
+      };
+      if ($oponent.text() == 'NS') {
+        _nsVulnarable = $oponent.hasClass('vulnarable');
+      } else {
+        _weVulnarable = $oponent.hasClass('vulnarable');
+      };
+
+      var $contract = $(this).parent().find('.contract').eq(0);
+      if ($contract.text()=='pass') {
+        _levelContract = 0;
+        _double = false;
+        _redouble = false;
+      } else {
+        _levelContract = parseInt($contract.text()[0]);
+        _colorContract = $contract.data('color');
+        console.log('edit', $contract.html());
+        if ($contract.hasClass('redoubled')) {
+          _double = true;
+          _redouble = true;
+        } else if ($contract.hasClass('redoubled')) {
+          _double = true;
+          _redouble = false;
+        } else {
+          _double = false;
+          _redouble = false;
+        }
+      };
+
+      _handPoints = $(this).parent().find('.handPoints').eq(0).text();
+      _tricks = parseInt($(this).parent().find('.tricks').eq(0).text());
+
+
+      // _nr, _player, _nsVulnarable, _weVulnarable, _levelContract, _colorContract, _double, _redouble, _handPoints, _tricks
+      game0.init(_nr, _player, _nsVulnarable, _weVulnarable, _levelContract, _colorContract, _double, _redouble, _handPoints, _tricks);
+      game0.print();
+      editStatus = true;
+      $('.save h1').text('SAVE (nr: '+game0.nr+')');
+      console.log(game0);
+    });
 
     $copy.appendTo($('body'));
 
