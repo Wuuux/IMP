@@ -100,7 +100,7 @@ p {
   }
   .tricks {
     &::after {
-      content:'(tricks';
+      content:'tricks';
       font-size: $smallerFont;
     }
   }
@@ -110,7 +110,7 @@ p {
       content:')';
     }
     &::before {
-      content:'';
+      content:'(';
     }
   }
   .winPoints {
@@ -119,6 +119,10 @@ p {
   .impPoints {
     font-size: 1.1em;
     color : red;
+    &::after {
+      content:'imp';
+      font-size: $smallerFont;
+    }
   }
   .NStotalImpPoints::before {
     content: 'NS:';
