@@ -23,7 +23,7 @@ p {
   .NSvulnarable, .WEvulnarable {
     width : 100px;
     min-height :50px;
-    background: green;
+    // background: green;
     font-size: 0.9em;
     margin : 10px;
     color : white;
@@ -178,4 +178,17 @@ section.player span {
   margin: 0 10px;
   background: lightgrey;
   border-radius: 30px;
+}
+
+.choosen {
+  background: grey;
+  color : red;
+}
+
+.vulnarableColor {
+  background: red;
+}
+
+.notvulnarableColor {
+  background: green;
 }
