@@ -124,6 +124,9 @@ p {
       font-size: $smallerFont;
     }
   }
+  .NStotalImpPoints, .WEtotalImpPoints {
+    display: none;
+  }
   .NStotalImpPoints::before {
     content: 'NS:';
     font-size: $smallerFont;
@@ -191,4 +194,10 @@ section.player span {
 
 .notvulnarableColor {
   background: green;
+}
+
+.saved {
+  .NStotalImpPoints, .WEtotalImpPoints {
+    display: inline;
+  }
 }

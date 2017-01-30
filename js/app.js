@@ -63,6 +63,7 @@ $(document).ready(function(){
 
 
     this.print = function (){
+      this.impPoints = -Math.floor((Math.random() * 10) + 1);
       $spansInBar.eq(0).text(this.nr);
       $spansInBar.eq(1).text(this.player);
 
@@ -308,7 +309,9 @@ $(document).ready(function(){
         resetView();
 
     }
+
     game0.print();
+    recountTotalSums();
   });
 
 
@@ -365,8 +368,12 @@ $(document).ready(function(){
     _tricks = parseInt($(this).parent().find('.tricks').eq(0).text());
 
     game0.init(_nr, _player, _nsVulnarable, _weVulnarable, _levelContract, _colorContract, _double, _redouble, _handPoints, _tricks);
+
     game0.print();
+    console.log('spans',$spansInBar);
+    console.log('player',$('.playersVulnarable'));
     resetView();
+    console.log('player2',$('.playersVulnarable'));
 
     editStatus = true;
     $('.save h1').text('SAVE (nr: '+game0.nr+')');
@@ -420,14 +427,15 @@ $(document).ready(function(){
   };
 
   function resetView(){
-    // $('.playerName').css('background','green').text('NS');
-    if (($('.playerName').text == 'NS') && (game0.nsVulnarable))  $('.playerName').removeClass('vulnarableColor').addClass('notvulnarableColor');
-    if (($('.playerName').text == 'NS') && !(game0.nsVulnarable)) $('.playerName').removeClass('vulnarableColor').addClass('notvulnarableColor');
-    if (($('.playerName').text == 'WE') && (game0.weVulnarable))  $('.playerName').removeClass('notvulnarableColor').addClass('vulnarableColor');
-    if (($('.playerName').text == 'WE') && !(game0.weVulnarable)) $('.playerName').removeClass('vulnarableColor').addClass('notvulnarableColor');
-    if (game0.nsVulnarable) $('.NSvulnarable').removeClass('vulnarableColor').addClass('notvulnarableColor');
+    $('.playerName').text(game0.player);
+    console.log('resetView',game0);
+    if ((game0.player == 'NS') && (game0.nsVulnarable == true ))  $('.playerName').removeClass('notvulnarableColor').addClass('vulnarableColor');
+    if ((game0.player == 'NS') && (game0.nsVulnarable == false)) $('.playerName').removeClass('vulnarableColor').addClass('notvulnarableColor');
+    if ((game0.player == 'WE') && (game0.weVulnarable == true ))  $('.playerName').removeClass('notvulnarableColor').addClass('vulnarableColor');
+    if ((game0.player == 'WE') && (game0.weVulnarable == false)) $('.playerName').removeClass('vulnarableColor').addClass('notvulnarableColor');
+    if (game0.nsVulnarable == true) $('.NSvulnarable').removeClass('notvulnarableColor').addClass('vulnarableColor');
     else $('.NSvulnarable').removeClass('vulnarableColor').addClass('notvulnarableColor');
-    if (game0.weVulnarable) $('.WEvulnarable').removeClass('vulnarableColor').addClass('notvulnarableColor');
+    if (game0.weVulnarable == true) $('.WEvulnarable').removeClass('notvulnarableColor').addClass('vulnarableColor');
     else $('.WEvulnarable').removeClass('vulnarableColor').addClass('notvulnarableColor');
     var index;
     if (game0.colorContract=='clubs') {
