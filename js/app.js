@@ -62,7 +62,7 @@ $(document).ready(function(){
 
 
 
-    this.print = function (){
+    this.print = function(){
       // this.impPoints = -Math.floor((Math.random() * 10) + 1);
 
 
@@ -146,40 +146,54 @@ $(document).ready(function(){
 
       $spansInBar.eq(6).text(this.handPoints);
 
-      function countImp(){
-        var nsV;
-        var weV;
-        if (this.nsVulnarable == true) nsV = 'vulnarable'
-        else nsV = 'notVunarable';
-        if (this.weVulnarable == true) weV = 'vulnarable'
-        else weV = 'notVunarable';
-        if (this.player == 'NS') {
-              if (this.redouble == true) {
-                return imp( nsV, weV, this.levelContract, this.colorContract, this.handPoints, this.tricks, 'redouble');
-              } else {
-                if (this.double == true) {
-                  return imp( nsV, weV, this.levelContract, this.colorContract, this.handPoints, this.tricks, 'double');
-                } else {
-                  return imp( nsV, weV, this.levelContract, this.colorContract, this.handPoints, this.tricks, 'undouble');
-                };
-              };
-        } else {
-                if (this.redouble == true) {
-                      return imp( weV, nsV, this.levelContract, this.colorContract, this.handPoints, this.tricks, 'redouble');
-                } else {
-                  if (this.double == true) {
-                      return imp( weV, nsV, this.levelContract, this.colorContract, this.handPoints, this.tricks, 'double');
-                  } else {
-                      return imp( weV, nsV, this.levelContract, this.colorContract, this.handPoints, this.tricks, 'undouble');
-                  };
-                };
-        }
-      };
 
-      this.impPoints = countImp();
+      console.log(this);
+      this.impPoints = this.countImp();
       $spansInBar.eq(8).text(this.impPoints);
     }; // end of this.print()
+
+    this.countImp = function(){
+      var result;
+      var nsV;
+      var weV;
+
+      if (this.nsVulnarable == true) nsV = 'vulnarable'
+      else nsV = 'notVulnarable';
+      if (this.weVulnarable == true) weV = 'vulnarable'
+      else weV = 'notVulnarable';
+
+      if (this.player == 'NS') {
+            if (this.redouble == true) {
+              return imp( nsV, weV, this.levelContract, this.colorContract, this.handPoints, this.tricks, 'redouble');
+              console.log('redouble');
+            } else {
+              if (this.double == true) {
+                return imp( nsV, weV, this.levelContract, this.colorContract, this.handPoints, this.tricks, 'double');
+                console.log('double');
+              } else {
+                result = imp( nsV, weV, this.levelContract, this.colorContract, this.handPoints, this.tricks, 'notdouble');
+                return result;
+
+              };
+            };
+      } else {
+              if (this.redouble == true) {
+                    return imp( weV, nsV, this.levelContract, this.colorContract, this.handPoints, this.tricks, 'redouble');
+              } else {
+                if (this.double == true) {
+                    return imp( weV, nsV, this.levelContract, this.colorContract, this.handPoints, this.tricks, 'double');
+                } else {
+                    return imp( weV, nsV, this.levelContract, this.colorContract, this.handPoints, this.tricks, 'notdouble');
+                };
+              };
+      };
+
+    };
+
   };// end of GameClass
+
+
+
 
   // do przeniesienia
   var game0 = new gameClass();
