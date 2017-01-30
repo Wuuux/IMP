@@ -63,7 +63,9 @@ $(document).ready(function(){
 
 
     this.print = function (){
-      this.impPoints = -Math.floor((Math.random() * 10) + 1);
+      // this.impPoints = -Math.floor((Math.random() * 10) + 1);
+
+
       $spansInBar.eq(0).text(this.nr);
       $spansInBar.eq(1).text(this.player);
 
@@ -143,6 +145,38 @@ $(document).ready(function(){
       };
 
       $spansInBar.eq(6).text(this.handPoints);
+
+      function countImp(){
+        var nsV;
+        var weV;
+        if (this.nsVulnarable == true) nsV = 'vulnarable'
+        else nsV = 'notVunarable';
+        if (this.weVulnarable == true) weV = 'vulnarable'
+        else weV = 'notVunarable';
+        if (this.player == 'NS') {
+              if (this.redouble == true) {
+                return imp( nsV, weV, this.levelContract, this.colorContract, this.handPoints, this.tricks, 'redouble');
+              } else {
+                if (this.double == true) {
+                  return imp( nsV, weV, this.levelContract, this.colorContract, this.handPoints, this.tricks, 'double');
+                } else {
+                  return imp( nsV, weV, this.levelContract, this.colorContract, this.handPoints, this.tricks, 'undouble');
+                };
+              };
+        } else {
+                if (this.redouble == true) {
+                      return imp( weV, nsV, this.levelContract, this.colorContract, this.handPoints, this.tricks, 'redouble');
+                } else {
+                  if (this.double == true) {
+                      return imp( weV, nsV, this.levelContract, this.colorContract, this.handPoints, this.tricks, 'double');
+                  } else {
+                      return imp( weV, nsV, this.levelContract, this.colorContract, this.handPoints, this.tricks, 'undouble');
+                  };
+                };
+        }
+      };
+
+      this.impPoints = countImp();
       $spansInBar.eq(8).text(this.impPoints);
     }; // end of this.print()
   };// end of GameClass
