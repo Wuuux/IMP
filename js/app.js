@@ -17,7 +17,7 @@ $(document).ready(function(){
     this.double         = false;
     this.redouble       = false;
     this.handPoints     = 0;
-    this.tricks         = 0;
+    this.tricks         = 6;
     this.overtricks     = 0;
     this.undertricks    = 0;
     this.pointsToWin    = 0;
@@ -147,7 +147,7 @@ $(document).ready(function(){
       $spansInBar.eq(6).text(this.handPoints);
 
 
-      console.log(this);
+
       this.impPoints = this.countImp();
       $spansInBar.eq(8).text(this.impPoints);
     }; // end of this.print()
@@ -165,11 +165,11 @@ $(document).ready(function(){
       if (this.player == 'NS') {
             if (this.redouble == true) {
               return imp( nsV, weV, this.levelContract, this.colorContract, this.handPoints, this.tricks, 'redouble');
-              console.log('redouble');
+
             } else {
               if (this.double == true) {
                 return imp( nsV, weV, this.levelContract, this.colorContract, this.handPoints, this.tricks, 'double');
-                console.log('double');
+
               } else {
                 result = imp( nsV, weV, this.levelContract, this.colorContract, this.handPoints, this.tricks, 'notdouble');
                 return result;
@@ -418,10 +418,9 @@ $(document).ready(function(){
     game0.init(_nr, _player, _nsVulnarable, _weVulnarable, _levelContract, _colorContract, _double, _redouble, _handPoints, _tricks);
 
     game0.print();
-    console.log('spans',$spansInBar);
-    console.log('player',$('.playersVulnarable'));
+
     resetView();
-    console.log('player2',$('.playersVulnarable'));
+
 
     editStatus = true;
     $('.save h1').text('SAVE (nr: '+game0.nr+')');
@@ -476,7 +475,7 @@ $(document).ready(function(){
 
   function resetView(){
     $('.playerName').text(game0.player);
-    console.log('resetView',game0);
+
     if ((game0.player == 'NS') && (game0.nsVulnarable == true ))  $('.playerName').removeClass('notvulnarableColor').addClass('vulnarableColor');
     if ((game0.player == 'NS') && (game0.nsVulnarable == false)) $('.playerName').removeClass('vulnarableColor').addClass('notvulnarableColor');
     if ((game0.player == 'WE') && (game0.weVulnarable == true ))  $('.playerName').removeClass('notvulnarableColor').addClass('vulnarableColor');
