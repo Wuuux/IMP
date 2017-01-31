@@ -27,7 +27,7 @@ $(document).ready(function(){
     this.countOverTricks = function (){
           if (this.levelContract == 0){
                                     this.levelContract    = 0;
-                                    this.tricks           = 0;
+                                    this.tricks           = 6;
                                     this.undertricks      = 0;
                                     this.overtricks       = 0;
           } else {

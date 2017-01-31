@@ -179,7 +179,7 @@ section.player span {
 .edit, .delete {
   padding: 0 20px;
   margin: 0 10px;
-  background: lightgrey;
+  background: black;
   border-radius: 30px;
 }
 
@@ -196,8 +196,141 @@ section.player span {
   background: green;
 }
 
-.saved {
+
+
+.saved{
+
+  background-color : black ;
+  color : lightgrey;
+  text-align: left;
+  padding-left: 5%;
+  .number {
+
+    font-size: $smallerFont;
+    &::after {
+      content: '.';
+    }
+  }
+  .oponent {
+    text-decoration: line-through;
+    font-size: $smallerFont;
+  }
+  .vulnarable {
+    &.player {
+      color : red;
+      font-weight: bold;
+    }
+    &.oponent {
+      color : red;
+    }
+  }
+  .notvulnarable {
+    &.player {
+      color : green;
+      font-weight: bold;
+    }
+    &.oponent {
+      color : green;
+
+    }
+  }
+  .undoubled::after {
+    content: '.';
+    font-size: $smallerFont;
+  }
+  .doubled::after {
+    content: 'x';
+    font-size: $smallerFont;
+  }
+  .redoubled::after {
+    content: 'xx';
+    font-size: $smallerFont;
+  }
+  .handPoints::after {
+    content: 'p';
+    font-size: $smallerFont;
+  }
+  .tricks {
+    &::after {
+      content:'tricks';
+      font-size: $smallerFont;
+    }
+  }
+  .overtricks {
+    font-size: $smallerFont;
+    &::after {
+      content:')';
+    }
+    &::before {
+      content:'(';
+    }
+  }
+  .winPoints {
+    font-size: $smallerFont;
+  }
+  .impPoints {
+    font-size: 1.1em;
+    color : red;
+    &::after {
+      content:'imp';
+      font-size: $smallerFont;
+    }
+  }
+
   .NStotalImpPoints, .WEtotalImpPoints {
     display: inline;
   }
+  .NStotalImpPoints::before {
+    content: 'NS:';
+    font-size: $smallerFont;
+  }
+  .WEtotalImpPoints::before {
+    content: 'WE:';
+    font-size: $smallerFont;
+  }
+
+  @media only screen and (max-width: 500px) {
+    font-size: 20px;
+    .number {
+      width : 30px;
+      display: inline-table;
+    }
+    .player {
+      width : 30px;
+      display: inline-table;
+    }
+    .oponent {
+      width : 30px;
+      display: inline-table;
+    }
+    .contract {
+      width : 70px;
+      display: inline-table;
+
+    }
+    .handPoints {
+      width : 50px;
+      display: inline-table;
+    }
+    .tricks {
+      width : 50px;
+      display: inline-table;
+
+    }
+    .overtricks {
+      width : 30px;
+      display: inline-table;
+
+    }
+    .impPoints {
+      width : 40px;
+      display: inline-table;
+    }
+    .NStotalImpPoints, .WEtotalImpPoints {
+      width : 30px;
+      color : yellow;
+      display: inline-table;
+    }
+  }
+
 }
