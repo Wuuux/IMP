@@ -11,10 +11,13 @@ section {
 section.player {
 
   span,p {
+
     &:hover {
-      transform: scale(1.1,1);
+      transform: scale(1.2,1.2);
       color : red;
       font-weight: bold;
+
+
     }
     p {
       max-height: 30px;
@@ -50,7 +53,7 @@ section.player {
     font-size: 20px;
   }
   background-color : black ;
-  color : grey;
+  color : lightgrey;
   text-align: left;
   padding-left: 5%;
   .number {
@@ -100,7 +103,7 @@ section.player {
   }
   .tricks {
     &::after {
-      content:'tricks';
+      content:'';
       font-size: $smallerFont;
     }
   }
@@ -152,11 +155,20 @@ section.player img {
 }
 
 section.player span {
+  box-sizing: border-box;
+  font-size: 1.4em;
+  border : 1px solid black;
+  border-radius: 20px;
   width:14.285714285714285714285714285714%;
-  padding: 0 5px;
+  padding: 0 2px;
   background: lightgrey;
   display: block;
   float: left;
+  transform: scale(1.1,1.1);
+  &:hover {
+    z-index: 10000;
+    transform: scale(1.2,1.2);
+  }
 }
 .navTable {width : 100%; margin-top: 40px; position : fixed; z-index: 1}
 
