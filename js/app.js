@@ -326,7 +326,8 @@ $(document).ready(function(){
     $copy.removeClass('navTable').addClass('saved');
     if (game0.nr < 10) $copy.find('span').eq(0).text("0"+game0.nr);
     $copy.css('border-bottom','1px solid lightgrey');
-    $copy.append($("<span class='edit'>EDIT</span><span class='delete'>DELETE</span>"));
+    $copy.append($("<span class='edit'>&hellip;</span><span class='delete'>&otimes;</span>"));
+    //<span class='details'>&dArr;</span>
 
     $copy.find('.delete').on('click',deleteSavedBar);
     $copy.find('.edit').on('click', editGame);
@@ -394,6 +395,7 @@ $(document).ready(function(){
 
     if ($contract.text()=='pass') {
       _levelContract = 0;
+      _colorContract = 'pass';
       _double = false;
       _redouble = false;
     } else {
