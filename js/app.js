@@ -326,7 +326,7 @@ $(document).ready(function(){
     $copy.removeClass('navTable').addClass('saved');
     if (game0.nr < 10) $copy.find('span').eq(0).text("0"+game0.nr);
     $copy.css('border-bottom','1px solid lightgrey');
-    $copy.append($("<span class='edit glyphicon glyphicon-align-left'>&hellip;</span><span class='delete glyphicon glyphicon-align-left'>&otimes;</span>"));
+    $copy.append($("<span class='edit glyphicon glyphicon-pencil'></span><span class='delete glyphicon glyphicon-trash'></span>"));
 
     //<span class='details'>&dArr;</span>
 
