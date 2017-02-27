@@ -346,7 +346,7 @@ $(document).ready(function(){
           $copy.insertBefore($('.saved').eq(nrToRemove-1));
       }
       editStatus = false;
-      $('.save h1').text('SAVE');
+      $('.save h1').text("SAVE <span class='delete glyphicon glyphicon-floppy-save'></span>");
       $('.edit').show();
       $('.delete').show();
       game0.init(nrLast+1,'NS',false,false,0,'pass', false, false, 20, 6);
