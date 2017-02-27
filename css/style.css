@@ -4,7 +4,7 @@ body { font-size: 30px; }
 
 section { text-align: center; }
 
-section.player span:hover, section.player p:hover { transform: scale(1.2, 1.2); color: red; font-weight: bold; cursor: pointer; }
+section.player span:hover, section.player p:hover { transform: scale(1.2, 1.2); color: red; font-weight: bold; cursor: pointer; } 
 
 section.player span p, section.player p p { max-height: 30px; }
 
