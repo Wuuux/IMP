@@ -181,9 +181,18 @@ section.player span {
 .save {
   h1 {
     background: lightgrey;
+    color : white;
     &:hover {
       background : grey;
       color : red;
+    }
+    span {
+      margin-top: 5px;
+      background: inherit;
+      // &:hover {
+      //   background : inherit;
+      //   color : red;
+      // }
     }
   }
 }
