@@ -1,6 +1,12 @@
 
 $(document).ready(function(){
 
+  if (typeof(Storage) !== "undefined") {
+    alert('Local Storage OK');
+} else {
+    alert('Local Storage ERROR');
+}
+
   var editStatus        = false;
   var $spansInBar       = $('section.scoreTable.navTable').find('span');
   var $dataContracts    = $('[data-contract]');
