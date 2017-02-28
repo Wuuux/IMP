@@ -518,16 +518,22 @@ $(document).ready(function(){
     $dataContracts.removeClass('choosen');
     $dataContracts.eq(index).addClass('choosen');
     if (game0.double == true) {
-      $('[data-doubled]').data('doubled','yes').css('color','white').css('background','red');
+      $('[data-doubled]').data('doubled','yes').css('color','white');
+      $('[data-doubled]').data('doubled','yes').css('background','red');
     } else {
-      $('[data-doubled]').data('doubled','no').css('color','black').css('background','white');
-      $('[data-redoubled]').data('redoubled','no').css('color','black').css('background','white');
+      $('[data-doubled]').data('doubled','no').css('color','black');
+      $('[data-doubled]').data('doubled','no').css('background','white');
+      $('[data-redoubled]').data('redoubled','no').css('color','black');
+      $('[data-redoubled]').data('redoubled','no').css('background','white');
     };
     if (game0.redouble == true) {
-      $('[data-doubled]').data('doubled','yes').css('color','white').css('background','red');
-      $('[data-redoubled]').data('redoubled','yes').css('color','white').css('background','red');
+      $('[data-doubled]').data('doubled','yes').css('color','white');
+      $('[data-doubled]').data('doubled','yes').css('background','red');
+      $('[data-redoubled]').data('redoubled','yes').css('color','white');
+      $('[data-redoubled]').data('redoubled','yes').css('background','red');
     } else {
-      $('[data-redoubled]').data('redoubled','no').css('color','black').css('background','white');
+      $('[data-redoubled]').data('redoubled','no').css('color','black');
+      $('[data-redoubled]').data('redoubled','no').css('background','white');
     };
     $dataTricks.removeClass('choosen');
     $dataTricks.eq(game0.tricks).addClass('choosen');
