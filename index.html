@@ -6,10 +6,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-
-
-
     <script src="./js/pointsToWinTable.js"></script>
     <script src="./js/app.js"></script>
     <link rel="stylesheet" href="./css/style.css" />
@@ -18,20 +14,31 @@
 <body>
 
   <section class='scoreTable container-fluid navTable'>
-    <span class='number'>1</span>
-    <span class='player notvulnarable'>NS</span>
-    :
-    <span class='oponent notvulnarable'>WE</span>
-    <span class='contract undoubled'>pass</span>
+    <div class='col-xs-12 col-sm-4 col-md-3 col-lg-3'>
+        <span class='number'>1</span>
+        <span class='player notvulnarable'>NS</span>
+        /
+        <span class='oponent notvulnarable'>WE</span>
+        <span class='contract undoubled'>pass</span>
+    </div>
 
-    <span class='tricks'>7</span>
-    <span class='overtricks'>0</span>
-    <span class='handPoints'>20</span>
+    <div class='col-xs-12 col-sm-8 col-md-9 col-lg-9'>
+        tricks: <span class='tricks'>7</span>
+        <span class='overtricks'>0</span>
+        points: <span class='handPoints'>20</span>
+        <span class='winPoints'></span>
 
-    <span class='winPoints'></span>
-    <span class='impPoints'>0</span>
-    <span class='NStotalImpPoints'>0</span>
-    <span class='WEtotalImpPoints'>0</span>
+    </div>
+    <div class='col-xs-8 col-sm-12 col-md-12 col-lg-12'>
+        <span class='impPoints'>0</span>
+      </div>
+      <div class='col-xs-2 col-sm-12 col-md-12 col-lg-12'>
+        <span class='NStotalImpPoints'> 0</span>
+      </div>
+      <div class='col-xs-2 col-sm-12 col-md-12 col-lg-12'>
+        <span class='WEtotalImpPoints'> 0</span>
+      </div>
+    </div>
   </section>
 
 	<section class='player container-fluid'>

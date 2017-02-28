@@ -1,13 +1,13 @@
 
 $(document).ready(function(){
 
-  if (typeof(Storage) !== "undefined") {
-    alert('Local Storage item : game1: ' + localStorage.getItem("game1") );
-    alert('Local Storage item : game2: ' + localStorage.getItem("game2") );
-    alert('Local Storage item : game3: ' + localStorage.getItem("game3") );
-} else {
-    alert('Local Storage ERROR');
-}
+//   if (typeof(Storage) !== "undefined") {
+//     alert('Local Storage item : game1: ' + localStorage.getItem("game1") );
+//     alert('Local Storage item : game2: ' + localStorage.getItem("game2") );
+//     alert('Local Storage item : game3: ' + localStorage.getItem("game3") );
+// } else {
+//     alert('Local Storage ERROR');
+// }
 
 
   var editStatus        = false;
@@ -340,7 +340,7 @@ $(document).ready(function(){
     $copy.removeClass('navTable').addClass('saved');
     if (game0.nr < 10) $copy.find('span').eq(0).text("0"+game0.nr);
     $copy.css('border-bottom','1px solid lightgrey');
-    $copy.append($("<span class='edit glyphicon glyphicon-pencil'></span><span class='delete glyphicon glyphicon-trash'></span>"));
+    $copy.append($("<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'><span class='edit glyphicon glyphicon-pencil'></span><span class='delete glyphicon glyphicon-trash'></span></div>"));
 
     //<span class='details'>&dArr;</span>
 
