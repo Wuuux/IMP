@@ -5,6 +5,11 @@ body {
     font-size: 14px;
   }
 }
+
+.row {
+  margin : 0;
+}
+
 section {
   text-align: center;
 }
@@ -24,11 +29,11 @@ section.player {
     }
   }
   .NSvulnarable, .WEvulnarable {
-    width : 100px;
+    width : 40%;
     min-height :50px;
     // background: green;
     font-size: 0.9em;
-    margin : 10px;
+    margin: 10px;
     color : white;
   }
 }
@@ -36,8 +41,8 @@ section.player {
 
 .playersVulnarable, .NSvulnarable, .WEvulnarable, .playerName {
   display: flex;
+  justify-content:center;
   align-items: center;
-  justify-content: center;
 }
 
 .playerName {
@@ -47,6 +52,10 @@ section.player {
   font-size: 1.6em;
   font-weight: bold;
   color : white;
+}
+
+.container-fluid {
+  padding: 0;
 }
 .scoreTable {
   div {
@@ -58,7 +67,7 @@ section.player {
   background-color : black ;
   color : lightgrey;
   text-align: left;
-  padding-left: 5%;
+  // padding-left: 5%;
   .number {
     font-size: $smallerFont;
     &::after {
