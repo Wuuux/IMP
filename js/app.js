@@ -330,9 +330,9 @@ $(document).ready(function(){
 
   $('.save h1').on('click',function(){
 
-    if (game0.nr == 1) localStorage.setItem("game1", 'gra1 OK');
-    if (game0.nr == 2) localStorage.setItem("game2", 'gra2 OK');
-    if (game0.nr == 3) localStorage.setItem("game3", 'gra3 OK');
+    // if (game0.nr == 1) localStorage.setItem("game1", 'gra1 OK');
+    // if (game0.nr == 2) localStorage.setItem("game2", 'gra2 OK');
+    // if (game0.nr == 3) localStorage.setItem("game3", 'gra3 OK');
 
 
     var $copy = $('section.scoreTable.navTable').eq(0).clone(true);
@@ -340,7 +340,7 @@ $(document).ready(function(){
     $copy.removeClass('navTable').addClass('saved');
     if (game0.nr < 10) $copy.find('span').eq(0).text("0"+game0.nr);
     $copy.css('border-bottom','1px solid lightgrey');
-    $copy.append($("<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'><span class='edit glyphicon glyphicon-pencil'></span><span class='delete glyphicon glyphicon-trash'></span></div>"));
+    $copy.find('.pencil').append($("<span class='edit glyphicon glyphicon-pencil'></span>"));
 
     //<span class='details'>&dArr;</span>
 
@@ -360,7 +360,7 @@ $(document).ready(function(){
           $copy.insertBefore($('.saved').eq(nrToRemove-1));
       }
       editStatus = false;
-      $('.save h1').text("SAVE <span class='delete glyphicon glyphicon-floppy-save'></span>");
+      $('.save h1').html("SAVE <span class='delete glyphicon glyphicon-floppy-save'></span>");
       $('.edit').show();
       $('.delete').show();
       game0.init(nrLast+1,'NS',false,false,0,'pass', false, false, 20, 6);
