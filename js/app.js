@@ -381,8 +381,8 @@ $(document).ready(function(){
 
   function editGame(){
     // resetView();
-    var _nr             = parseInt($(this).parent().find('.number').eq(0).text());
-    var _player         = $(this).parent().find('.player').eq(0).text();
+    var _nr             = parseInt($(this).parent().parent().find('.number').eq(0).text());
+    var _player         = $(this).parent().parent().find('.player').eq(0).text();
 
     var _nsVulnarable;
     var _weVulnarable;
@@ -393,8 +393,8 @@ $(document).ready(function(){
     var _handPoints;
     var _tricks;
 
-    var $player  = $(this).parent().find('.player').eq(0);
-    var $oponent = $(this).parent().find('.oponent').eq(0);
+    var $player  = $(this).parent().parent().find('.player').eq(0);
+    var $oponent = $(this).parent().parent().find('.oponent').eq(0);
     if ($player.text() == 'NS') {
       _nsVulnarable = $player.hasClass('vulnarable');
     } else {
@@ -406,7 +406,7 @@ $(document).ready(function(){
       _weVulnarable = $oponent.hasClass('vulnarable');
     };
 
-    var $contract = $(this).parent().find('.contract').eq(0);
+    var $contract = $(this).parent().parent().find('.contract').eq(0);
 
     if ($contract.text()=='pass') {
       _levelContract = 0;
@@ -429,8 +429,8 @@ $(document).ready(function(){
       }
     };
 
-    _handPoints = parseInt($(this).parent().find('.handPoints').eq(0).text());
-    _tricks = parseInt($(this).parent().find('.tricks').eq(0).text());
+    _handPoints = parseInt($(this).parent().parent().find('.handPoints').eq(0).text());
+    _tricks = parseInt($(this).parent().parent().find('.tricks').eq(0).text());
 
     game0.init(_nr, _player, _nsVulnarable, _weVulnarable, _levelContract, _colorContract, _double, _redouble, _handPoints, _tricks);
 
