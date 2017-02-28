@@ -2,10 +2,13 @@
 $(document).ready(function(){
 
   if (typeof(Storage) !== "undefined") {
-    alert('Local Storage OK');
+    alert('Local Storage item : game1: ' + localStorage.getItem("game1") );
+    alert('Local Storage item : game2: ' + localStorage.getItem("game2") );
+    alert('Local Storage item : game3: ' + localStorage.getItem("game3") );
 } else {
     alert('Local Storage ERROR');
 }
+
 
   var editStatus        = false;
   var $spansInBar       = $('section.scoreTable.navTable').find('span');
@@ -326,6 +329,11 @@ $(document).ready(function(){
   });
 
   $('.save h1').on('click',function(){
+
+    if (game0.nr == 1) localStorage.setItem("game1", 'gra1 OK');
+    if (game0.nr == 2) localStorage.setItem("game2", 'gra2 OK');
+    if (game0.nr == 3) localStorage.setItem("game3", 'gra3 OK');
+
 
     var $copy = $('section.scoreTable.navTable').eq(0).clone(true);
 
