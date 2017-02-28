@@ -13,7 +13,7 @@ section.player {
   span,p {
 
     &:hover {
-      transform: scale(1.2,1.2);
+      // transform: scale(1.2,1.2);
       color : red;
       font-weight: bold;
       cursor : pointer;
@@ -160,7 +160,7 @@ section.player img {
 div.contract {
   div {
     display: flex;
-    justify-content: space-between;;
+    justify-content:space-around;
     align-items: center;
     margin : 5px 0;
   }
@@ -171,15 +171,15 @@ section.player span {
   font-size: 1.4em;
   border : 1px solid black;
   // border-radius: 20px;
-  width:13%;
+  width:10%;
   padding: 0 2px;
   background: lightgrey;
   display: block;
   float: left;
-  transform: scale(1.1,1.1);
+  // transform: scale(1.1,1.1);
   &:hover {
     z-index: 10000;
-    transform: scale(1.2,1.2);
+    // transform: scale(1.2,1.2);
     cursor : pointer;
   }
 }
@@ -187,7 +187,7 @@ section.player span {
 
 .playerName, .NSvulnarable, .WEvulnarable {
   &:hover {
-    transform: scale(1.1,1.1);
+    // transform: scale(1.1,1.1);
     cursor : pointer;
   }
 }
@@ -221,9 +221,9 @@ section.player span {
 }
 
 .choosen {
-  background: lightblue !important;
-  color : red;
-  transform: scale(1.3,1.3) !important;
+  background: black !important;
+  color : white;
+  // transform: scale(1.3,1.3) !important;
   z-index: 1;
 }
 
