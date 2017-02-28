@@ -192,7 +192,7 @@ section.player span {
     cursor : pointer;
   }
 }
-.navTable {width : 100%; margin-top: 40px; position : fixed; z-index: 4}
+.navTable {width : 100%; margin-top: 0; position : fixed; z-index: 4}
 
 .playerName, .NSvulnarable, .WEvulnarable {
   &:hover {
