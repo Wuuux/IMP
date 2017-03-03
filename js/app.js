@@ -362,7 +362,10 @@ $(document).ready(function(){
       game0.redouble = false;
       $('[data-doubled]').css('color','black');
       $('[data-redoubled]').css('color','black');
-
+      if (game0.colorContract == 'pass') {
+        game0.tricks = 6;
+        resetView();
+      };
       game0.print();
   });
 
