@@ -376,6 +376,10 @@ $(document).ready(function(){
         game0.init(game0.nr+1,'NS',false,false,0,'pass', false, false, 20, 6);
         game0.print();
         resetView();
+        //scroll
+        $('html, body').animate({
+        scrollTop: $('.saved').last().offset().top
+        }, 2000);
 
     }
 
