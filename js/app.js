@@ -1,6 +1,6 @@
 
 $(document).ready(function(){
-console.log('xx');
+
   var mode = '';
     $('#start button').on('click',function(){
         if ($(this).text() == 'SINGLE') {
@@ -8,20 +8,25 @@ console.log('xx');
           mode = 'single';
           $("section.save").hide();
           $("section.singleButton").hide();
+          $("section.matchButton").show();
         } else {
           $('#mask').hide();
           mode = 'match';
           $("section.singleButton").show();
+          $("section.save").show();
+          $("section.matchButton").hide();
+
+          if (typeof(Storage) !== "undefined") {
+              console.log(localStorage);
+          } else {
+              alert('No local storage!');
+          };
+
+
         };
       });
 
-//   if (typeof(Storage) !== "undefined") {
-//     alert('Local Storage item : game1: ' + localStorage.getItem("game1") );
-//     alert('Local Storage item : game2: ' + localStorage.getItem("game2") );
-//     alert('Local Storage item : game3: ' + localStorage.getItem("game3") );
-// } else {
-//     alert('Local Storage ERROR');
-// }
+
 
 
   var editStatus        = false;
@@ -213,6 +218,32 @@ console.log('xx');
 
     };
 
+    this.getGame = function(){
+      var nr   = (this.nr < 10) ? '0'+this.nr : ''+this.nr;
+      var NS_v = (this.nsVulnarable == true) ? 'x':'.';
+      var WE_v = (this.weVulnarable == true) ? 'x':'.';
+      var contract = '';
+      console.log('kolor contract',this.colorContract);
+      console.log('jestem', this);
+      if (this.colorContract == 'clubs') contract = 'clubs_';
+      if (this.colorContract == 'diams') contract = 'diams_';
+      if (this.colorContract == 'hearts') contract = 'hearts';
+      if (this.colorContract == 'spades') contract = 'spades';
+      if (this.colorContract == 'NT') contract = 'NT____';
+      if (this.levelContract == 0) contract = 'pass__';
+      var dbl = (this.double == false) ? '.' : 'x';
+      var redbl = (this.redouble == false) ? '.' : 'x';
+      var tricks   = (this.tricks < 10) ? '0'+this.tricks : ''+this.tricks;
+      var handpoints = (this.handPoints < 10) ? '0'+this.handPoints : '' + this.handPoints;
+      var sign = (this.impPoints < 0) ? '-' : '+';
+      var imp = ((this.impPoints < 10) && (this.impPoints >= 0)) ? '0'+this.impPoints : ''+this.impPoints;
+      if (imp < 0) {
+        imp = -imp;
+        imp = ((imp < 10) && (imp >= 0)) ? '0'+imp : ''+imp;
+      };
+      return '' + nr + ' ' +this.player + ' ' + NS_v + WE_v + ' ' + this.levelContract + '_' + contract + ' '+ dbl+redbl + ' ' + tricks + '_tricks ' + handpoints + '_points' + ' ' + sign+imp+'_imp';
+    };
+
   };// end of GameClass
 
 
@@ -352,6 +383,15 @@ console.log('xx');
     $('section.singleButton').show();
     $('section.matchButton').hide();
     mode = 'match';
+
+    if (typeof(Storage) !== "undefined") {
+        console.log(localStorage);
+
+    } else {
+        alert('No local storage!');
+    };
+
+
   });
 
   $('.singleButton h1').on('click',function(){
@@ -362,11 +402,6 @@ console.log('xx');
   });
 
   $('.save h1').on('click',function(){
-
-    // if (game0.nr == 1) localStorage.setItem("game1", 'gra1 OK');
-    // if (game0.nr == 2) localStorage.setItem("game2", 'gra2 OK');
-    // if (game0.nr == 3) localStorage.setItem("game3", 'gra3 OK');
-
 
     var $copy = $('section.scoreTable.navTable').eq(0).clone(true);
 
@@ -400,17 +435,27 @@ console.log('xx');
       resetView();
       $('html, body').animate({
       scrollTop: $('.saved').eq(nrToRemove-1).offset().top
-      }, 2000);
+    }, 1000);
 
     } else {
         $copy.appendTo($('body'));
+        console.log('game0:',game0, game0.getGame());
+        if (game0.nr < 10)
+          {
+            localStorage.setItem('bridgeGame0'+game0.nr, game0.getGame() )
+          }
+        else
+          {
+            localStorage.setItem('bridgeGame'+game0.nr, game0.getGame() );
+          };
         game0.init(game0.nr+1,'NS',false,false,0,'pass', false, false, 20, 6);
+
         game0.print();
         resetView();
         //scroll
         $('html, body').animate({
         scrollTop: $('.saved').last().offset().top
-        }, 2000);
+      }, 1000);
 
     }
 
