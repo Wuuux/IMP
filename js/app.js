@@ -2,6 +2,9 @@
 $(document).ready(function(){
 
   var mode = '';
+  var contractFromLocalStorage = '';
+  var contractCounter = 0;
+
     $('#start button').on('click',function(){
         if ($(this).text() == 'SINGLE') {
           $('#mask').hide();
@@ -9,21 +12,66 @@ $(document).ready(function(){
           $("section.save").hide();
           $("section.singleButton").hide();
           $("section.matchButton").show();
+          $("section.resetMatchButton").hide();
         } else {
           $('#mask').hide();
           mode = 'match';
           $("section.singleButton").show();
           $("section.save").show();
           $("section.matchButton").hide();
-
+          $("section.resetMatchButton").show();
+          var matchExist = false;
           if (typeof(Storage) !== "undefined") {
-              console.log(localStorage);
+
+            $.each(localStorage, function(item){
+              console.log(item);
+              if (item == 'contractCounter') {
+                contractCounter = parseInt(localStorage.getItem('contractCounter'));
+                matchExist = true;
+              };
+            });
+
           } else {
               alert('No local storage!');
           };
+          console.log('match exist :', matchExist);
+          if (matchExist == true) {
+                for (var i = 1; i <= contractCounter; i++) {
+                  if (i<10)
+                      {
+                        if (localStorage.getItem('bridgeGame0' + i) != 'undefined')
+                        {
+                          contractFromLocalStorage = localStorage.getItem('bridgeGame0' + i);
+                        }
+                        else {
+                          contractCounter = i-1;
 
+                        };
+                      }
+                  else
+                      {
+                        if (localStorage.getItem('bridgeGame' + i) != 'undefined')
+                        {
+                          contractFromLocalStorage = localStorage.getItem('bridgeGame' + i);
+                        }
+                        else {
+                          contractCounter = i-1;
 
+                        };
+
+                      } ;
+
+                  //insertContract from local Storage
+                  var $copy = $('section.scoreTable.navTable').eq(0).clone(true);
+
+                  $copy.removeClass('navTable').addClass('saved');
+                  console.log('kopia',$copy);
+
+                };
+          };
         };
+
+
       });
 
 
@@ -378,10 +426,21 @@ $(document).ready(function(){
 
   });
 
+  $('.resetMatchButton h1').on('click',function(){
+    localStorage.setItem('contractCounter',0);
+    contractCounter = 0;
+    $('.saved').remove();
+    game0.init(1,'NS',false,false,0,'pass', false, false, 20, 6);
+    game0.print();
+    resetView();
+
+  });
+
   $('.matchButton h1').on('click',function(){
     $('section.save').show();
     $('section.singleButton').show();
     $('section.matchButton').hide();
+    $('section.resetMatchButton').show();
     mode = 'match';
 
     if (typeof(Storage) !== "undefined") {
@@ -398,6 +457,7 @@ $(document).ready(function(){
     $('section.save').hide();
     $('section.singleButton').hide();
     $('section.matchButton').show();
+    $('section.resetMatchButton').hide();
     mode = 'single';
   });
 
@@ -419,10 +479,11 @@ $(document).ready(function(){
       var nrToRemove = parseInt($copy.find('span.number').eq(0).text());
 
       var nrLast = parseInt($('.saved').find('span.number').last().text());
-
+      if (nrToRemove < 10) localStorage.setItem('game0'+nrToRemove, game0.getGame())
+      else localStorage.setItem('game'+nrToRemove, game0.getGame());
       if (nrToRemove == nrLast){
         $('.saved').last().remove();
-        $copy.appendTo($('body'));
+        $copy.appendTo($('#match'));
       } else {
           $('.saved').eq(nrToRemove-1).remove();
           $copy.insertBefore($('.saved').eq(nrToRemove-1));
@@ -433,12 +494,15 @@ $(document).ready(function(){
       $('.delete').show();
       game0.init(nrLast+1,'NS',false,false,0,'pass', false, false, 20, 6);
       resetView();
+      $('section.singleButton').show();
+
       $('html, body').animate({
-      scrollTop: $('.saved').eq(nrToRemove-1).offset().top
-    }, 1000);
+        scrollTop: $('.saved').eq(nrToRemove-1).offset().top
+      }, 1000);
 
     } else {
-        $copy.appendTo($('body'));
+        $copy.appendTo($('#match'));
+        contractCounter++;
         console.log('game0:',game0, game0.getGame());
         if (game0.nr < 10)
           {
@@ -448,6 +512,7 @@ $(document).ready(function(){
           {
             localStorage.setItem('bridgeGame'+game0.nr, game0.getGame() );
           };
+        localStorage.setItem('contractCounter',contractCounter);
         game0.init(game0.nr+1,'NS',false,false,0,'pass', false, false, 20, 6);
 
         game0.print();
@@ -528,6 +593,7 @@ $(document).ready(function(){
     $('.save h1').text('SAVE (nr: '+game0.nr+')');
     $('.edit').hide();
     $('.delete').hide();
+    $('section.singleButton').hide();
 
     $('html, body').animate({
     scrollTop: $('.playersVulnarable').last().offset().top
@@ -591,19 +657,7 @@ $(document).ready(function(){
     if (game0.weVulnarable == true) $('.WEvulnarable').removeClass('notvulnarableColor').addClass('vulnarableColor');
     else $('.WEvulnarable').removeClass('vulnarableColor').addClass('notvulnarableColor');
     var index;
-    // if (game0.colorContract=='clubs') {
-    //   index = (game0.levelContract-1)*5+1;
-    // } else if (game0.colorContract=='diams') {
-    //           index = (game0.levelContract-1)*5+2;
-    //        } else if (game0.colorContract=='hearts') {
-    //                  index = (game0.levelContract-1)*5+3;
-    //               } else if (game0.colorContract=='spades') {
-    //                         index = (game0.levelContract-1)*5+4;
-    //                      } else if (game0.colorContract=='NT') {
-    //                                index = (game0.levelContract-1)*5+5;
-    //                             } else {
-    //                               index = 0;
-    //                             }
+
     $dataContracts.removeClass('choosen');
     // $dataContracts.eq(index).addClass('choosen');
     for (var i = 0; i < $dataContracts.length; i++) {

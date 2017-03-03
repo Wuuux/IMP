@@ -220,7 +220,7 @@ section.player span {
   }
 }
 
-.save, .matchButton, .singleButton {
+.save, .matchButton, .singleButton, .resetMatchButton {
   h1 {
     background: lightgrey;
     color : white;
@@ -246,6 +246,9 @@ section.player span {
   background: black;
   font-size: 0.7em;
   text-align: left;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .choosen {
