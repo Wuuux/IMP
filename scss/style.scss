@@ -69,31 +69,35 @@ section.player {
   text-align: left;
   // padding-left: 5%;
   .number {
-    font-size: $smallerFont;
+    // font-size: $smallerFont;
     &::after {
       content: '.';
     }
   }
   .oponent {
-    text-decoration: line-through;
-    font-size: $smallerFont;
+    // text-decoration: line-through;
+    // font-size: $smallerFont;
   }
   .vulnarable {
     &.player {
       color : red;
-      font-weight: bold;
+      // font-weight: bold;
+      border-bottom: 2px solid red;
     }
     &.oponent {
       color : red;
+      border-bottom: 2px solid red;
     }
   }
   .notvulnarable {
     &.player {
       color : green;
-      font-weight: bold;
+      // font-weight: bold;
+      border-bottom: 2px solid green;
     }
     &.oponent {
       color : green;
+      border-bottom: 2px solid green;
 
     }
   }
@@ -131,11 +135,19 @@ section.player {
   .winPoints {
     font-size: $smallerFont;
   }
+.impPlace {
+  position: absolute;
+    right: 0px;
+    text-align: right;
+    top: 0.2em;
+    font-size: 1.5em;
+  }
+  
   .impPoints {
     font-size: 1.1em;
     color : red;
     &::after {
-      content:'imp';
+      content:' imp';
       font-size: $smallerFont;
     }
   }
@@ -263,45 +275,49 @@ section.player span {
 
   .number {
 
-    font-size: $smallerFont;
+    // font-size: $smallerFont;
     &::after {
       content: '.';
     }
   }
   .oponent {
-    text-decoration: line-through;
-    font-size: $smallerFont;
+    // text-decoration: line-through;
+    // font-size: $smallerFont;
   }
   .vulnarable {
     &.player {
       color : red;
-      font-weight: bold;
+      // font-weight: bold;
+      border-bottom: 2px solid red;
     }
     &.oponent {
       color : red;
+      border-bottom: 2px solid red;
     }
   }
   .notvulnarable {
     &.player {
       color : green;
-      font-weight: bold;
+      // font-weight: bold;
+      border-bottom: 2px solid green;
     }
     &.oponent {
       color : green;
+      border-bottom: 2px solid green;
 
     }
   }
   .undoubled::after {
     content: '.';
-    font-size: $smallerFont;
+    // font-size: $smallerFont;
   }
   .doubled::after {
     content: 'x';
-    font-size: $smallerFont;
+    // font-size: $smallerFont;
   }
   .redoubled::after {
     content: 'xx';
-    font-size: $smallerFont;
+    // font-size: $smallerFont;
   }
   .handPoints::after {
     content: '';
@@ -330,7 +346,7 @@ section.player span {
     color : red;
     &::after {
       content:'';
-      font-size: $smallerFont;
+      // font-size: $smallerFont;
     }
   }
 
@@ -382,6 +398,7 @@ section.player span {
     .impPoints {
       width : 30px;
       display: inline-table;
+      position: absolute;
     }
     .NStotalImpPoints, .WEtotalImpPoints {
       width : 30px;
