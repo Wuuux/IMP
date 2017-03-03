@@ -277,14 +277,17 @@ $(document).ready(function(){
     if (game0.levelContract > 0) {
         if ($(this).data('doubled') == 'no') {
           $(this).data('doubled','yes');
-          $(this).css('color','red');
+          $(this).css('color','white');
+          $(this).css('background','red');
           game0.double = true;
         } else {
           $(this).data('doubled','no');
           game0.double = false;
           $(this).css('color','black');
+          $(this).css('background','lightgrey');
           game0.redouble = false;
           $('[data-redoubled]').css('color','black');
+          $('[data-redoubled]').css('background','lightgrey');
           $('[data-redoubled]').data('redoubled','no');
         }
         game0.print();
@@ -297,11 +300,13 @@ $(document).ready(function(){
             if ($('[data-doubled]').data('doubled') == 'yes') {
               if ($(this).data('redoubled') == 'no') {
                 $(this).data('redoubled','yes');
-                $(this).css('color','red');
+                $(this).css('color','white');
+                $(this).css('background','red');
                 game0.redouble = true;
               } else {
                 $(this).data('redoubled','no');
                 $(this).css('color','black');
+                $(this).css('background','lightgrey');
                 game0.redouble = false;
               }
             }
@@ -502,21 +507,25 @@ $(document).ready(function(){
     if (game0.weVulnarable == true) $('.WEvulnarable').removeClass('notvulnarableColor').addClass('vulnarableColor');
     else $('.WEvulnarable').removeClass('vulnarableColor').addClass('notvulnarableColor');
     var index;
-    if (game0.colorContract=='clubs') {
-      index = (game0.levelContract-1)*5+1;
-    } else if (game0.colorContract=='diams') {
-              index = (game0.levelContract-1)*5+2;
-           } else if (game0.colorContract=='hearts') {
-                     index = (game0.levelContract-1)*5+3;
-                  } else if (game0.colorContract=='spades') {
-                            index = (game0.levelContract-1)*5+4;
-                         } else if (game0.colorContract=='NT') {
-                                   index = (game0.levelContract-1)*5+5;
-                                } else {
-                                  index = 0;
-                                }
+    // if (game0.colorContract=='clubs') {
+    //   index = (game0.levelContract-1)*5+1;
+    // } else if (game0.colorContract=='diams') {
+    //           index = (game0.levelContract-1)*5+2;
+    //        } else if (game0.colorContract=='hearts') {
+    //                  index = (game0.levelContract-1)*5+3;
+    //               } else if (game0.colorContract=='spades') {
+    //                         index = (game0.levelContract-1)*5+4;
+    //                      } else if (game0.colorContract=='NT') {
+    //                                index = (game0.levelContract-1)*5+5;
+    //                             } else {
+    //                               index = 0;
+    //                             }
     $dataContracts.removeClass('choosen');
-    $dataContracts.eq(index).addClass('choosen');
+    // $dataContracts.eq(index).addClass('choosen');
+    for (var i = 0; i < $dataContracts.length; i++) {
+      if ($dataContracts.eq(i).data('contract') == game0.levelContract+'_'+game0.colorContract) $dataContracts.eq(i).addClass('choosen');
+    };
+
 
     if (game0.double == true) {
       $('[data-doubled]').data('doubled','yes').css('color','white');
@@ -542,7 +551,7 @@ $(document).ready(function(){
     };
 
     $dataHandPoints.removeClass('choosen');
-    
+
     for (var i = 0; i < $dataHandPoints.length; i++) {
       if ($dataHandPoints.eq(i).data('handpoints') == game0.handPoints) $dataHandPoints.eq(i).addClass('choosen');
     };
