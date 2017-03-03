@@ -428,3 +428,8 @@ section.player span {
   }
 
 }
+
+@media only screen and (max-width: 500px) {
+    .saved.container-fluid.scoreTable { position: relative; }
+    .saved .impPlace { position: absolute; }
+}
