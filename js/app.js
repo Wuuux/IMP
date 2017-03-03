@@ -1,5 +1,19 @@
 
 $(document).ready(function(){
+console.log('xx');
+  var mode = '';
+    $('#start button').on('click',function(){
+        if ($(this).text() == 'SINGLE') {
+          $('#mask').hide();
+          mode = 'single';
+          $("section.save").hide();
+          $("section.singleButton").hide();
+        } else {
+          $('#mask').hide();
+          mode = 'match';
+          $("section.singleButton").show();
+        };
+      });
 
 //   if (typeof(Storage) !== "undefined") {
 //     alert('Local Storage item : game1: ' + localStorage.getItem("game1") );
@@ -333,6 +347,20 @@ $(document).ready(function(){
 
   });
 
+  $('.matchButton h1').on('click',function(){
+    $('section.save').show();
+    $('section.singleButton').show();
+    $('section.matchButton').hide();
+    mode = 'match';
+  });
+
+  $('.singleButton h1').on('click',function(){
+    $('section.save').hide();
+    $('section.singleButton').hide();
+    $('section.matchButton').show();
+    mode = 'single';
+  });
+
   $('.save h1').on('click',function(){
 
     // if (game0.nr == 1) localStorage.setItem("game1", 'gra1 OK');
@@ -579,7 +607,6 @@ $(document).ready(function(){
 
 
   };
-
 
 
 });
