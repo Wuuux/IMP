@@ -370,6 +370,9 @@ $(document).ready(function(){
       $('.delete').show();
       game0.init(nrLast+1,'NS',false,false,0,'pass', false, false, 20, 6);
       resetView();
+      $('html, body').animate({
+      scrollTop: $('.saved').eq(nrToRemove-1).offset().top
+      }, 2000);
 
     } else {
         $copy.appendTo($('body'));
@@ -452,6 +455,10 @@ $(document).ready(function(){
     $('.save h1').text('SAVE (nr: '+game0.nr+')');
     $('.edit').hide();
     $('.delete').hide();
+
+    $('html, body').animate({
+    scrollTop: $('.playersVulnarable').last().offset().top
+    }, 1000);
 
   };
 
