@@ -59,6 +59,7 @@ section.player {
 }
 .scoreTable {
   border-top: 1px solid lightgrey;
+  border-bottom: 1px solid lightgrey;
   div {
     float: left;
   }
@@ -136,17 +137,20 @@ section.player {
   .winPoints {
     font-size: $smallerFont;
   }
-.impPlace {
-  position: absolute;
-    right: 0px;
-    text-align: right;
-    top: 0.2em;
-    font-size: 1.5em;
-  }
+  .impPlace {
+    position: absolute;
+      right: 0px;
+      text-align: left;
+      top: 0.1em;
+      font-size: 1.5em;
+
+    }
 
   .impPoints {
     font-size: 1.1em;
     color : red;
+    position: absolute;
+    left: 40px;
     &::after {
       content:' imp';
       font-size: $smallerFont;
@@ -342,12 +346,16 @@ section.player span {
   .winPoints {
     font-size: $smallerFont;
   }
-  .impPoints {
-    font-size: 1.1em;
-    color : red;
-    &::after {
-      content:'';
-      // font-size: $smallerFont;
+  .impPlace {
+    .impPoints {
+      font-size: 1.1em;
+      color : red;
+      // position: absolute;
+      // left: 40px;
+      &::after {
+        content:'';
+        // font-size: $smallerFont;
+      }
     }
   }
 
@@ -399,7 +407,9 @@ section.player span {
     .impPoints {
       width : 30px;
       display: inline-table;
-      position: absolute;
+      // position: absolute;
+      // left: 40px;
+      // left:40px;
     }
     .NStotalImpPoints, .WEtotalImpPoints {
       width : 30px;
@@ -411,6 +421,9 @@ section.player span {
     }
     .edit {
       color : blue;
+    }
+    .impPlace {
+      position: static;
     }
   }
 
