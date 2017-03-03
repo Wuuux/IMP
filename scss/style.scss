@@ -58,6 +58,7 @@ section.player {
   padding: 0;
 }
 .scoreTable {
+  border-top: 1px solid lightgrey;
   div {
     float: left;
   }
@@ -142,7 +143,7 @@ section.player {
     top: 0.2em;
     font-size: 1.5em;
   }
-  
+
   .impPoints {
     font-size: 1.1em;
     color : red;
