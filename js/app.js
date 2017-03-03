@@ -503,20 +503,21 @@ $(document).ready(function(){
     else $('.WEvulnarable').removeClass('vulnarableColor').addClass('notvulnarableColor');
     var index;
     if (game0.colorContract=='clubs') {
-      index = game0.levelContract-1;
+      index = (game0.levelContract-1)*5+1;
     } else if (game0.colorContract=='diams') {
-              index = game0.levelContract-1+7;
+              index = (game0.levelContract-1)*5+2;
            } else if (game0.colorContract=='hearts') {
-                     index = game0.levelContract-1+14;
+                     index = (game0.levelContract-1)*5+3;
                   } else if (game0.colorContract=='spades') {
-                            index = game0.levelContract-1+21;
+                            index = (game0.levelContract-1)*5+4;
                          } else if (game0.colorContract=='NT') {
-                                   index = game0.levelContract-1+28;
+                                   index = (game0.levelContract-1)*5+5;
                                 } else {
-                                  index = 35;
+                                  index = 0;
                                 }
     $dataContracts.removeClass('choosen');
     $dataContracts.eq(index).addClass('choosen');
+
     if (game0.double == true) {
       $('[data-doubled]').data('doubled','yes').css('color','white');
       $('[data-doubled]').data('doubled','yes').css('background','red');
@@ -536,9 +537,15 @@ $(document).ready(function(){
       $('[data-redoubled]').data('redoubled','no').css('background','white');
     };
     $dataTricks.removeClass('choosen');
-    $dataTricks.eq(game0.tricks).addClass('choosen');
+    for (var i = 0; i < $dataTricks.length; i++) {
+      if ($dataTricks.eq(i).data('tricks') == game0.tricks) $dataTricks.eq(i).addClass('choosen');
+    };
+
     $dataHandPoints.removeClass('choosen');
-    $dataHandPoints.eq(game0.handPoints).addClass('choosen');
+    
+    for (var i = 0; i < $dataHandPoints.length; i++) {
+      if ($dataHandPoints.eq(i).data('handpoints') == game0.handPoints) $dataHandPoints.eq(i).addClass('choosen');
+    };
 
     // $('.NSvulnarable').css('background','green');
     // $('.WEvulnarable').css('background','green');
