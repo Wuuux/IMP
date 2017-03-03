@@ -208,7 +208,7 @@ $(document).ready(function(){
   var game0 = new gameClass();
   game0.init(1,'NS',false,false,0,'pass', false, false, 20, 6);
   game0.print();
-  $dataContracts.eq(35).addClass('choosen'); // contract choosen : 'pass'
+  // $dataContracts.eq(35).addClass('choosen'); // contract choosen : 'pass'
 
 
   $('.playerName').on('click',function(){
