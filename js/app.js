@@ -66,6 +66,9 @@ $(document).ready(function(){
 
                   $copy.removeClass('navTable').addClass('saved');
                   console.log('kopia',$copy);
+                  console.log(contractFromLocalStorage);
+                  $copy.find('span.number').eq(0).text(contractFromLocalStorage[0]+contractFromLocalStorage[1]);
+                  $copy.appendTo($('#match'));
 
                 };
           };
@@ -326,29 +329,33 @@ $(document).ready(function(){
   });
 
   $('.NSvulnarable').on('click',function(){
-    if (game0.nsVulnarable) {
-      game0.nsVulnarable = false;
-      $(this).removeClass('vulnarableColor').addClass('notvulnarableColor')
-    } else {
-      game0.nsVulnarable = true;
-      $(this).removeClass('notvulnarableColor').addClass('vulnarableColor')
+    if (mode != 'match') {
+          if (game0.nsVulnarable) {
+            game0.nsVulnarable = false;
+            $(this).removeClass('vulnarableColor').addClass('notvulnarableColor')
+          } else {
+            game0.nsVulnarable = true;
+            $(this).removeClass('notvulnarableColor').addClass('vulnarableColor')
+          };
+          if ((game0.nsVulnarable == true)  && (game0.player == 'NS')) $('.playerName').removeClass('notvulnarableColor').addClass('vulnarableColor');
+          if ((game0.nsVulnarable == false) && (game0.player == 'NS')) $('.playerName').removeClass('vulnarableColor').addClass('notvulnarableColor');
+          game0.print();
     };
-    if ((game0.nsVulnarable == true)  && (game0.player == 'NS')) $('.playerName').removeClass('notvulnarableColor').addClass('vulnarableColor');
-    if ((game0.nsVulnarable == false) && (game0.player == 'NS')) $('.playerName').removeClass('vulnarableColor').addClass('notvulnarableColor');
-    game0.print();
   });
 
   $('.WEvulnarable').on('click',function(){
-    if (game0.weVulnarable) {
-      game0.weVulnarable = false;
-      $(this).removeClass('vulnarableColor').addClass('notvulnarableColor');
-    } else {
-      game0.weVulnarable = true;
-      $(this).removeClass('notvulnarableColor').addClass('vulnarableColor');
-    }
-    if ((game0.weVulnarable == true)  && (game0.player == 'WE')) $('.playerName').removeClass('notvulnarableColor').addClass('vulnarableColor');
-    if ((game0.weVulnarable == false) && (game0.player == 'WE')) $('.playerName').removeClass('vulnarableColor').addClass('notvulnarableColor');
-    game0.print();
+    if (mode != 'match') {
+          if (game0.weVulnarable) {
+            game0.weVulnarable = false;
+            $(this).removeClass('vulnarableColor').addClass('notvulnarableColor');
+          } else {
+            game0.weVulnarable = true;
+            $(this).removeClass('notvulnarableColor').addClass('vulnarableColor');
+          }
+          if ((game0.weVulnarable == true)  && (game0.player == 'WE')) $('.playerName').removeClass('notvulnarableColor').addClass('vulnarableColor');
+          if ((game0.weVulnarable == false) && (game0.player == 'WE')) $('.playerName').removeClass('vulnarableColor').addClass('notvulnarableColor');
+          game0.print();
+    };
   });
 
 
@@ -446,13 +453,82 @@ $(document).ready(function(){
     $('section.resetMatchButton').show();
     mode = 'match';
 
+    var matchExist = false;
     if (typeof(Storage) !== "undefined") {
-        console.log(localStorage);
+
+      $.each(localStorage, function(item){
+        console.log(item);
+        if (item == 'contractCounter') {
+          contractCounter = parseInt(localStorage.getItem('contractCounter'));
+          if (contractCounter > 0) matchExist = true;
+        };
+      });
 
     } else {
         alert('No local storage!');
     };
+    console.log('match exist :', matchExist);
+    $('.saved').remove();
+    if (matchExist == true) {
 
+          for (var i = 1; i <= contractCounter; i++) {
+            if (i<10)
+                {
+                  if (localStorage.getItem('bridgeGame0' + i) != 'undefined')
+                  {
+                    contractFromLocalStorage = localStorage.getItem('bridgeGame0' + i);
+                  }
+                  else {
+                    contractCounter = i-1;
+
+                  };
+                }
+            else
+                {
+                  if (localStorage.getItem('bridgeGame' + i) != 'undefined')
+                  {
+                    contractFromLocalStorage = localStorage.getItem('bridgeGame' + i);
+                  }
+                  else {
+                    contractCounter = i-1;
+
+                  };
+
+                } ;
+
+            //insertContract from local Storage
+
+            var $copy = $('section.scoreTable.navTable').eq(0).clone(true);
+
+            $copy.removeClass('navTable').addClass('saved');
+            console.log('match',contractCounter);
+            console.log('match',$copy);
+            console.log('match',contractFromLocalStorage);
+            $copy.find('span.number').eq(0).text(contractFromLocalStorage[0]+contractFromLocalStorage[1]);
+            $copy.appendTo($('#match'));
+
+          };
+
+          if      (contractCounter % 16 == 1)  game0.init(contractCounter+1,'NS',true,false,0,'pass', false, false, 20, 6)
+          else if (contractCounter % 16 == 2)  game0.init(contractCounter+1,'NS',false,true,0,'pass', false, false, 20, 6)
+          else if (contractCounter % 16 == 3)  game0.init(contractCounter+1,'NS',true,true,0,'pass', false, false, 20, 6)
+          else if (contractCounter % 16 == 4)  game0.init(contractCounter+1,'NS',true,false,0,'pass', false, false, 20, 6)
+          else if (contractCounter % 16 == 5)  game0.init(contractCounter+1,'NS',false,true,0,'pass', false, false, 20, 6)
+          else if (contractCounter % 16 == 6)  game0.init(contractCounter+1,'NS',true,true,0,'pass', false, false, 20, 6)
+          else if (contractCounter % 16 == 7)  game0.init(contractCounter+1,'NS',false,false,0,'pass', false, false, 20, 6)
+          else if (contractCounter % 16 == 8)  game0.init(contractCounter+1,'NS',false,true,0,'pass', false, false, 20, 6)
+          else if (contractCounter % 16 == 9)  game0.init(contractCounter+1,'NS',true,true,0,'pass', false, false, 20, 6)
+          else if (contractCounter % 16 ==10)  game0.init(contractCounter+1,'NS',false,false,0,'pass', false, false, 20, 6)
+          else if (contractCounter % 16 == 11) game0.init(contractCounter+1,'NS',true,false,0,'pass', false, false, 20, 6)
+          else if (contractCounter % 16 == 12) game0.init(contractCounter+1,'NS',true,true,0,'pass', false, false, 20, 6)
+          else if (contractCounter % 16 == 13) game0.init(contractCounter+1,'NS',false,false,0,'pass', false, false, 20, 6)
+          else if (contractCounter % 16 == 14) game0.init(contractCounter+1,'NS',true,false,0,'pass', false, false, 20, 6)
+          else if (contractCounter % 16 == 15) game0.init(contractCounter+1,'NS',false,true,0,'pass', false, false, 20, 6)
+          else if (contractCounter % 16 == 0)  game0.init(contractCounter+1,'NS',false,false,0,'pass', false, false, 20, 6);
+
+          game0.print();
+          resetView();
+    };
 
   });
 
@@ -516,7 +592,22 @@ $(document).ready(function(){
             localStorage.setItem('bridgeGame'+game0.nr, game0.getGame() );
           };
         localStorage.setItem('contractCounter',contractCounter);
-        game0.init(game0.nr+1,'NS',false,false,0,'pass', false, false, 20, 6);
+        if      (game0.nr % 16 == 1)  game0.init(game0.nr+1,'NS',true,false,0,'pass', false, false, 20, 6)
+        else if (game0.nr % 16 == 2)  game0.init(game0.nr+1,'NS',false,true,0,'pass', false, false, 20, 6)
+        else if (game0.nr % 16 == 3)  game0.init(game0.nr+1,'NS',true,true,0,'pass', false, false, 20, 6)
+        else if (game0.nr % 16 == 4)  game0.init(game0.nr+1,'NS',true,false,0,'pass', false, false, 20, 6)
+        else if (game0.nr % 16 == 5)  game0.init(game0.nr+1,'NS',false,true,0,'pass', false, false, 20, 6)
+        else if (game0.nr % 16 == 6)  game0.init(game0.nr+1,'NS',true,true,0,'pass', false, false, 20, 6)
+        else if (game0.nr % 16 == 7)  game0.init(game0.nr+1,'NS',false,false,0,'pass', false, false, 20, 6)
+        else if (game0.nr % 16 == 8)  game0.init(game0.nr+1,'NS',false,true,0,'pass', false, false, 20, 6)
+        else if (game0.nr % 16 == 9) game0.init(game0.nr+1,'NS',true,true,0,'pass', false, false, 20, 6)
+        else if (game0.nr % 16 == 10) game0.init(game0.nr+1,'NS',false,false,0,'pass', false, false, 20, 6)
+        else if (game0.nr % 16 == 11) game0.init(game0.nr+1,'NS',true,false,0,'pass', false, false, 20, 6)
+        else if (game0.nr % 16 == 12) game0.init(game0.nr+1,'NS',true,true,0,'pass', false, false, 20, 6)
+        else if (game0.nr % 16 == 13) game0.init(game0.nr+1,'NS',false,false,0,'pass', false, false, 20, 6)
+        else if (game0.nr % 16 == 14) game0.init(game0.nr+1,'NS',true,false,0,'pass', false, false, 20, 6)
+        else if (game0.nr % 16 == 15)  game0.init(game0.nr+1,'NS',false,true,0,'pass', false, false, 20, 6)
+        else if (game0.nr % 16 == 0)  game0.init(game0.nr+1,'NS',false,false,0,'pass', false, false, 20, 6);
 
         game0.print();
         resetView();
