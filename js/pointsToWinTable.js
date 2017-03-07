@@ -50,41 +50,43 @@ var contractPointsTable = [];
 
 contractPointsTable['notVulnarable'] = [
   '1clubs','1diams','1hearts','1spades','1NT',
-    '2clubs','2diams','2hearts','2spades','2NT',
-      '3clubs','3diams','3hearts','3spades','3NT',
-        '4clubs','4diams','4hearts','4spades','4NT',
-          '5clubs','5diams','5hearts','5spades','5NT',
-            '6clubs','6diams','6hearts','6spades','6NT',
-              '7clubs','7diams','7hearts','7spades','7NT','0pass'];
+  '2clubs','2diams','2hearts','2spades','2NT',
+  '3clubs','3diams','3hearts','3spades','3NT',
+  '4clubs','4diams','4hearts','4spades','4NT',
+  '5clubs','5diams','5hearts','5spades','5NT',
+  '6clubs','6diams','6hearts','6spades','6NT',
+  '7clubs','7diams','7hearts','7spades','7NT',
+  '0pass'];
 
 contractPointsTable['vulnarable'] = [
   '1clubs','1diams','1hearts','1spades','1NT',
-    '2clubs','2diams','2hearts','2spades','2NT',
-      '3clubs','3diams','3hearts','3spades','3NT',
-        '4clubs','4diams','4hearts','4spades','4NT',
-          '5clubs','5diams','5hearts','5spades','5NT',
-            '6clubs','6diams','6hearts','6spades','6NT',
-              '7clubs','7diams','7hearts','7spades','7NT','0pass'];
+  '2clubs','2diams','2hearts','2spades','2NT',
+  '3clubs','3diams','3hearts','3spades','3NT',
+  '4clubs','4diams','4hearts','4spades','4NT',
+  '5clubs','5diams','5hearts','5spades','5NT',
+  '6clubs','6diams','6hearts','6spades','6NT',
+  '7clubs','7diams','7hearts','7spades','7NT',
+  '0pass'];
 
 contractPointsTable['notVulnarable']['1clubs']=['notdouble','double','redouble'];
-contractPointsTable['notVulnarable']['1clubs']['notdouble']=70;
-contractPointsTable['notVulnarable']['1clubs']['double']=140;
-contractPointsTable['notVulnarable']['1clubs']['redouble']=230;
+contractPointsTable['notVulnarable']['1clubs']['notdouble'] =70;
+contractPointsTable['notVulnarable']['1clubs']['double']    =140;
+contractPointsTable['notVulnarable']['1clubs']['redouble']  =230;
 contractPointsTable['notVulnarable']['1diams']=['notdouble','double','redouble'];
-contractPointsTable['notVulnarable']['1diams']['notdouble']=70;
-contractPointsTable['notVulnarable']['1diams']['double']=140;
-contractPointsTable['notVulnarable']['1diams']['redouble']=230;
+contractPointsTable['notVulnarable']['1diams']['notdouble'] =70;
+contractPointsTable['notVulnarable']['1diams']['double']    =140;
+contractPointsTable['notVulnarable']['1diams']['redouble']  =230;
 contractPointsTable['notVulnarable']['1hearts']=['notdouble','double','redouble'];
 contractPointsTable['notVulnarable']['1hearts']['notdouble']=80;
-contractPointsTable['notVulnarable']['1hearts']['double']=160;
-contractPointsTable['notVulnarable']['1hearts']['redouble']=520;
+contractPointsTable['notVulnarable']['1hearts']['double']   =160;
+contractPointsTable['notVulnarable']['1hearts']['redouble'] =520;
 contractPointsTable['notVulnarable']['1spades']=['notdouble','double','redouble'];
 contractPointsTable['notVulnarable']['1spades']['notdouble']=80;
-contractPointsTable['notVulnarable']['1spades']['double']=160;
-contractPointsTable['notVulnarable']['1spades']['redouble']=520;
+contractPointsTable['notVulnarable']['1spades']['double']   =160;
+contractPointsTable['notVulnarable']['1spades']['redouble'] =520;
 contractPointsTable['notVulnarable']['1NT']=['notdouble','double','redouble'];
-contractPointsTable['notVulnarable']['1NT']['notdouble']=90;
-contractPointsTable['notVulnarable']['1NT']['double']=180;
+contractPointsTable['notVulnarable']['1NT']['notdouble']    =90;
+contractPointsTable['notVulnarable']['1NT']['double']       =180;
 contractPointsTable['notVulnarable']['1NT']['redouble']=560;
 contractPointsTable['notVulnarable']['2clubs']=['notdouble','double','redouble'];
 contractPointsTable['notVulnarable']['2clubs']['notdouble']=90;
@@ -513,8 +515,6 @@ function overtricksValue(vulnarability, levelContract, colorContract, double, tr
   };
 
 
-  // console.log(imp('vulnarable','notVulnarable',7,'spades',5,12,'redouble'));
-
   function imp(_playerVulnarable, _oponentVulnarable, _levelContract, _colorContract, _points, _tricks, _double){
 
     var playerPointsToWin;
@@ -522,18 +522,12 @@ function overtricksValue(vulnarability, levelContract, colorContract, double, tr
     var wonPoints;
     var contractValue = '' + _levelContract + _colorContract;
 
-    // console.log(_playerVulnarable, _oponentVulnarable, contractValue, _points, _tricks, _double);
-
     if (_points >= 20) {
                       playerPointsToWin = pointsToWinTable[_playerVulnarable][_points];
-                      // console.log('playerPointsToWin',playerPointsToWin, _tricks, _levelContract+6);
                       if ( _tricks >= (parseInt(_levelContract)+6) ) {
                         // wonPoints: contract + overtricks
-
                         wonPoints = contractPointsTable[_playerVulnarable][contractValue][_double]
                                     + overtricksValue(_playerVulnarable, _levelContract, _colorContract, _double, _tricks);
-                        // console.log('wonPoints',wonPoints);
-
                         if ( wonPoints >= playerPointsToWin) {
                           return pointsIMP(wonPoints - playerPointsToWin);
                         } else {
@@ -542,19 +536,16 @@ function overtricksValue(vulnarability, levelContract, colorContract, double, tr
                       } else {
                         // undertricks
                         wonPoints = playerPointsToWin + underTricksVal(_playerVulnarable, _double, parseInt(_levelContract)+6-_tricks);
-                          // console.log('wonPoints',wonPoints);
                         return -pointsIMP(wonPoints);
                       };
     } else {
                       if ( _tricks >= parseInt(_levelContract)+6 ) {
                         wonPoints = contractPointsTable[_playerVulnarable][contractValue][_double] + overtricksValue(_playerVulnarable, _levelContract, _colorContract, _double, _tricks);
                         wonPoints += pointsToWinTable[ _oponentVulnarable ][ 40-_points ];
-                          // console.log('wonPoints',wonPoints);
                         return pointsIMP(wonPoints);
                       } else {
                         oponentPointsToWin = pointsToWinTable[ _oponentVulnarable ][ 40 - _points ];
                         wonPoints = oponentPointsToWin - underTricksVal(_playerVulnarable, _double, parseInt(_levelContract)+6-_tricks);
-                          // console.log('wonPoints',wonPoints, oponentPointsToWin, underTricksVal(_playerVulnarable, _double, parseInt(_levelContract)+6-_tricks));
                         if (wonPoints > 0) return pointsIMP(wonPoints)
                         else return -pointsIMP(wonPoints);
                       };
