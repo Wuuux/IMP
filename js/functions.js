@@ -73,7 +73,23 @@ var $dataHandPoints   = $('[data-handpoints]');
 
   };
 
-  gameClass.prototype.setGame = function(){
+  gameClass.prototype.setGame = function(game){
+    this.nr             = 1;
+    this.player         = 'NS';
+    this.nsVulnarable   = false;
+    this.weVulnarable   = false;
+    this.levelContract  = 0;
+    this.colorContract  = 'pass';
+    this.double         = false;
+    this.redouble       = false;
+    this.handPoints     = 0;
+    this.tricks         = 6;
+    this.overtricks     = 0;
+    this.undertricks    = 0;
+
+    this.impPoints      = 0;
+    this.init();
+    this.print();
   };
 
   gameClass.prototype.getGame = function(){

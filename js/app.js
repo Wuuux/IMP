@@ -69,6 +69,25 @@ $(document).ready(function(){
                         $copy.appendTo($('#match'));
 
                       };
+
+                      if      (contractCounter % 16 == 1)  game0.init(contractCounter+1,'NS',true,false,0,'pass', false, false, 20, 6)
+                      else if (contractCounter % 16 == 2)  game0.init(contractCounter+1,'NS',false,true,0,'pass', false, false, 20, 6)
+                      else if (contractCounter % 16 == 3)  game0.init(contractCounter+1,'NS',true,true,0,'pass', false, false, 20, 6)
+                      else if (contractCounter % 16 == 4)  game0.init(contractCounter+1,'NS',true,false,0,'pass', false, false, 20, 6)
+                      else if (contractCounter % 16 == 5)  game0.init(contractCounter+1,'NS',false,true,0,'pass', false, false, 20, 6)
+                      else if (contractCounter % 16 == 6)  game0.init(contractCounter+1,'NS',true,true,0,'pass', false, false, 20, 6)
+                      else if (contractCounter % 16 == 7)  game0.init(contractCounter+1,'NS',false,false,0,'pass', false, false, 20, 6)
+                      else if (contractCounter % 16 == 8)  game0.init(contractCounter+1,'NS',false,true,0,'pass', false, false, 20, 6)
+                      else if (contractCounter % 16 == 9)  game0.init(contractCounter+1,'NS',true,true,0,'pass', false, false, 20, 6)
+                      else if (contractCounter % 16 ==10)  game0.init(contractCounter+1,'NS',false,false,0,'pass', false, false, 20, 6)
+                      else if (contractCounter % 16 == 11) game0.init(contractCounter+1,'NS',true,false,0,'pass', false, false, 20, 6)
+                      else if (contractCounter % 16 == 12) game0.init(contractCounter+1,'NS',true,true,0,'pass', false, false, 20, 6)
+                      else if (contractCounter % 16 == 13) game0.init(contractCounter+1,'NS',false,false,0,'pass', false, false, 20, 6)
+                      else if (contractCounter % 16 == 14) game0.init(contractCounter+1,'NS',true,false,0,'pass', false, false, 20, 6)
+                      else if (contractCounter % 16 == 15) game0.init(contractCounter+1,'NS',false,true,0,'pass', false, false, 20, 6)
+                      else if (contractCounter % 16 == 0)  game0.init(contractCounter+1,'NS',false,false,0,'pass', false, false, 20, 6);
+
+                      game0.print();
                 };
       };
     });
@@ -307,11 +326,8 @@ $(document).ready(function(){
 
       $copy.removeClass('navTable').addClass('saved');
       if (game0.nr < 10) $copy.find('span').eq(0).text("0"+game0.nr);
-      // $copy.css('border-bottom','1px solid lightgrey');
+
       $copy.find('.pencil').append($("<span class='edit'>EDIT</span>"));
-
-      //<span class='details'>&dArr;</span>
-
       $copy.find('.delete').on('click',deleteSavedBar);
       $copy.find('.edit').on('click', editGame);
 
@@ -328,11 +344,30 @@ $(document).ready(function(){
             $('.saved').eq(nrToRemove-1).remove();
             $copy.insertBefore($('.saved').eq(nrToRemove-1));
         }
+        console.log('nrLast',nrLast);
+        if      (nrLast % 16 == 1)  game0.init(nrLast+1,'NS',true,false,0,'pass', false, false, 20, 6)
+        else if (nrLast % 16 == 2)  game0.init(nrLast+1,'NS',false,true,0,'pass', false, false, 20, 6)
+        else if (nrLast % 16 == 3)  game0.init(nrLast+1,'NS',true,true,0,'pass', false, false, 20, 6)
+        else if (nrLast % 16 == 4)  game0.init(nrLast+1,'NS',true,false,0,'pass', false, false, 20, 6)
+        else if (nrLast % 16 == 5)  game0.init(nrLast+1,'NS',false,true,0,'pass', false, false, 20, 6)
+        else if (nrLast % 16 == 6)  game0.init(nrLast+1,'NS',true,true,0,'pass', false, false, 20, 6)
+        else if (nrLast % 16 == 7)  game0.init(nrLast+1,'NS',false,false,0,'pass', false, false, 20, 6)
+        else if (nrLast % 16 == 8)  game0.init(nrLast+1,'NS',false,true,0,'pass', false, false, 20, 6)
+        else if (nrLast % 16 == 9)  game0.init(nrLast+1,'NS',true,true,0,'pass', false, false, 20, 6)
+        else if (nrLast % 16 ==10)  game0.init(nrLast+1,'NS',false,false,0,'pass', false, false, 20, 6)
+        else if (nrLast % 16 == 11) game0.init(nrLast+1,'NS',true,false,0,'pass', false, false, 20, 6)
+        else if (nrLast % 16 == 12) game0.init(nrLast+1,'NS',true,true,0,'pass', false, false, 20, 6)
+        else if (nrLast % 16 == 13) game0.init(nrLast+1,'NS',false,false,0,'pass', false, false, 20, 6)
+        else if (nrLast % 16 == 14) game0.init(nrLast+1,'NS',true,false,0,'pass', false, false, 20, 6)
+        else if (nrLast % 16 == 15) game0.init(nrLast+1,'NS',false,true,0,'pass', false, false, 20, 6)
+        else if (nrLast % 16 == 0)  game0.init(nrLast+1,'NS',false,false,0,'pass', false, false, 20, 6);
+        game0.print();
+
         editStatus = false;
         $('.save h1').html("SAVE <span class='delete glyphicon glyphicon-floppy-save'></span>");
         $('.edit').show();
         $('.delete').show();
-        game0.init(nrLast+1,'NS',false,false,0,'pass', false, false, 20, 6);
+        // game0.init(nrLast+1,'NS',false,false,0,'pass', false, false, 20, 6);
         resetView();
         $('section.singleButton').show();
 
