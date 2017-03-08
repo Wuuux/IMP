@@ -62,11 +62,19 @@ $(document).ready(function(){
                             } ;
 
                         //insertContract from local Storage
+                        game0.setGame(contractFromLocalStorage);
+                        game0.print();
                         var $copy = $('section.scoreTable.navTable').eq(0).clone(true);
 
                         $copy.removeClass('navTable').addClass('saved');
-                        $copy.find('span.number').eq(0).text(contractFromLocalStorage[0]+contractFromLocalStorage[1]);
+                        $copy.find('.pencil').append($("<span class='edit'>EDIT</span>"));
+                        $copy.find('.delete').on('click',deleteSavedBar);
+                        $copy.find('.edit').on('click', editGame);
+                        // $copy.find('span.number').eq(0).text(contractFromLocalStorage[0]+contractFromLocalStorage[1]);
                         $copy.appendTo($('#match'));
+                        $('html, body').animate({
+                          scrollTop: $('.saved').last().offset().top
+                        }, 100);
 
                       };
 
@@ -280,12 +288,19 @@ $(document).ready(function(){
                   } ;
 
               //insertContract from local Storage
-
+              game0.setGame(contractFromLocalStorage);
+              game0.print();
               var $copy = $('section.scoreTable.navTable').eq(0).clone(true);
 
               $copy.removeClass('navTable').addClass('saved');
-              $copy.find('span.number').eq(0).text(contractFromLocalStorage[0]+contractFromLocalStorage[1]);
+              $copy.find('.pencil').append($("<span class='edit'>EDIT</span>"));
+              $copy.find('.delete').on('click',deleteSavedBar);
+              $copy.find('.edit').on('click', editGame);
+              // $copy.find('span.number').eq(0).text(contractFromLocalStorage[0]+contractFromLocalStorage[1]);
               $copy.appendTo($('#match'));
+              $('html, body').animate({
+                scrollTop: $('.saved').last().offset().top
+              }, 100);
 
             };
 

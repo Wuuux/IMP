@@ -30,7 +30,7 @@ var $dataHandPoints   = $('[data-handpoints]');
     this.print();
     this.countImp();
     this.getGame();
-    this.setGame();
+    this.setGame('01 NS .. 1_pass__ .. 06_tricks 20_points +00_imp');
     this.countOverTricks();
 
   };// end of GameClass
@@ -73,23 +73,26 @@ var $dataHandPoints   = $('[data-handpoints]');
 
   };
 
-  gameClass.prototype.setGame = function(game){
-    this.nr             = 1;
-    this.player         = 'NS';
-    this.nsVulnarable   = false;
-    this.weVulnarable   = false;
-    this.levelContract  = 0;
-    this.colorContract  = 'pass';
-    this.double         = false;
-    this.redouble       = false;
-    this.handPoints     = 0;
-    this.tricks         = 6;
+  gameClass.prototype.setGame = function(gameDescription){
+    //01 NS x. 1_NT____ x. 08_tricks 09_points -09_imp
+    this.nr             = parseInt(gameDescription[0]+gameDescription[1]);
+    this.player         = gameDescription[3]+gameDescription[4];
+    this.nsVulnarable   = (gameDescription[6] == 'x') ? true:false;
+    this.weVulnarable   = (gameDescription[7] == 'x') ? true:false;
+    this.levelContract  = parseInt(gameDescription[9]);
+    if      (gameDescription[11] == 'p') this.colorContract  = 'pass'
+    else if (gameDescription[11] == 'c') this.colorContract  = 'clubs'
+    else if (gameDescription[11] == 'd') this.colorContract  = 'diams'
+    else if (gameDescription[11] == 'h') this.colorContract  = 'hearts'
+    else if (gameDescription[11] == 's') this.colorContract  = 'spades'
+    else if (gameDescription[11] == 'N') this.colorContract  = 'NT';
+    this.double         = (gameDescription[18] == 'x') ? true:false;
+    this.redouble       = (gameDescription[19] == 'x') ? true:false;
+    this.tricks         = parseInt(gameDescription[21]+gameDescription[22]);
+    this.handPoints     = parseInt(gameDescription[31]+gameDescription[32]);
     this.overtricks     = 0;
     this.undertricks    = 0;
-
-    this.impPoints      = 0;
-    this.init();
-    this.print();
+    this.impPoints      = parseInt(gameDescription[41]+gameDescription[42]+gameDescription[43]);
   };
 
   gameClass.prototype.getGame = function(){
