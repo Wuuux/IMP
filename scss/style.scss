@@ -1,4 +1,5 @@
 $smallerFont : 0.7em;
+$headerHight: 70px; 
 body {
   font-size: 30px;
   @media only screen and (max-width: 500px) {
@@ -58,7 +59,7 @@ section.player {
   padding: 0;
 }
 .scoreTable {
-  height: 90px;
+  height: $headerHight;
   border-top: 1px solid lightgrey;
   border-bottom: 1px solid lightgrey;
   div {
@@ -223,7 +224,7 @@ section.player span {
 
 footer {
   width:100%;
-  height: 90px;
+  height: $headerHight;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -233,13 +234,13 @@ footer {
   background: black;
   z-index: 10000;
   section {
-    height : 70px;
+    height : $headerHight - 6px;
     overflow: hidden;
   }
 }
 
 #match {
-  padding-bottom: 100px;
+  padding-bottom: 80px;
 }
 
 .save, .matchButton, .singleButton, .resetMatchButton {
