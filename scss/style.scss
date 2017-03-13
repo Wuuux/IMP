@@ -1,5 +1,5 @@
 $smallerFont : 0.7em;
-$headerHight: 70px; 
+$headerHight: 70px;
 body {
   font-size: 30px;
   @media only screen and (max-width: 500px) {
@@ -230,7 +230,8 @@ footer {
   align-items: center;
   position : fixed;
   bottom: 0;
-  border-top: 1px solid white;
+  border-top: 1px solid lightgrey;
+  border-bottom: 1px solid lightgrey;
   background: black;
   z-index: 10000;
   section {
