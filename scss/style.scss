@@ -233,6 +233,7 @@ footer {
     height : $headerHight - 6px;
     overflow: hidden;
   }
+
 }
 
 #match {
@@ -519,5 +520,13 @@ div[data-contract='0_pass'] {
 @media only screen and (max-width: 500px) {
   body {
     font-size: 12px;
+  }
+  .save h1, .matchButton h1, .singleButton h1, .resetMatchButton h1
+  {
+    font-size: 12px;
+    background: inherit;
+    &:hover {
+      background: inherit;
+    }
   }
 }
