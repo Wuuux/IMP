@@ -7,98 +7,104 @@ $(document).ready(function(){
 
   var matchExist = false;
   // events
+  mode = 'single';
+  $("section.matchButton").show();
+  $('#mask').hide();
+  $("section.save").hide();
+  $("section.singleButton").hide();
+  $("section.resetMatchButton").hide();
 
-  $('#start button').on('click',function(){
-      if ($(this).text() == 'SINGLE') {
-                mode = 'single';
-                $("section.matchButton").show();
-                $('#mask').hide();
-                $("section.save").hide();
-                $("section.singleButton").hide();
-                $("section.resetMatchButton").hide();
-      } else {
-                mode = 'match';
-                $("section.singleButton").show();
-                $("section.save").show();
-                $("section.resetMatchButton").show();
-                $("section.matchButton").hide();
-                $('#mask').hide();
-                if (typeof(Storage) !== "undefined") {
-                        $.each(localStorage, function(item){
-                          if (item == 'contractCounter') {
-                            contractCounter = parseInt(localStorage.getItem('contractCounter'));
-                            matchExist = true;
-                          };
-                        });
-
-                } else {
-                        alert('No local storage!');
-                        mode = 'single';
-                        $("section.matchButton").hide();
-                        $('#mask').hide();
-                        $("section.save").hide();
-                        $("section.singleButton").hide();
-                        $("section.resetMatchButton").hide();
-                };
-                if (matchExist == true) {
-                      for (var i = 1; i <= contractCounter; i++) {
-                        if (i<10)
-                            {
-                              if (localStorage.getItem('bridgeGame0' + i) != 'undefined') {
-                                contractFromLocalStorage = localStorage.getItem('bridgeGame0' + i);
-                              }
-                              else {
-                                contractCounter = i-1;
-                              };
-                            }
-                        else
-                            {
-                              if (localStorage.getItem('bridgeGame' + i) != 'undefined') {
-                                contractFromLocalStorage = localStorage.getItem('bridgeGame' + i);
-                              }
-                              else {
-                                contractCounter = i-1;
-                              };
-                            } ;
-
-                        //insertContract from local Storage
-                        game0.setGame(contractFromLocalStorage);
-                        game0.print();
-                        var $copy = $('section.scoreTable.navTable').eq(0).clone(true);
-
-                        $copy.removeClass('navTable').addClass('saved');
-                        $copy.find('.pencil').append($("<span class='edit'>EDIT</span>"));
-                        $copy.find('.delete').on('click',deleteSavedBar);
-                        $copy.find('.edit').on('click', editGame);
-                        // $copy.find('span.number').eq(0).text(contractFromLocalStorage[0]+contractFromLocalStorage[1]);
-                        $copy.appendTo($('#match'));
-                        $('html, body').animate({
-                          scrollTop: $('.saved').last().offset().top
-                        }, 100);
-
-                      };
-
-                      if      (contractCounter % 16 == 1)  game0.init(contractCounter+1,'NS',true,false,0,'pass', false, false, 20, 6)
-                      else if (contractCounter % 16 == 2)  game0.init(contractCounter+1,'NS',false,true,0,'pass', false, false, 20, 6)
-                      else if (contractCounter % 16 == 3)  game0.init(contractCounter+1,'NS',true,true,0,'pass', false, false, 20, 6)
-                      else if (contractCounter % 16 == 4)  game0.init(contractCounter+1,'NS',true,false,0,'pass', false, false, 20, 6)
-                      else if (contractCounter % 16 == 5)  game0.init(contractCounter+1,'NS',false,true,0,'pass', false, false, 20, 6)
-                      else if (contractCounter % 16 == 6)  game0.init(contractCounter+1,'NS',true,true,0,'pass', false, false, 20, 6)
-                      else if (contractCounter % 16 == 7)  game0.init(contractCounter+1,'NS',false,false,0,'pass', false, false, 20, 6)
-                      else if (contractCounter % 16 == 8)  game0.init(contractCounter+1,'NS',false,true,0,'pass', false, false, 20, 6)
-                      else if (contractCounter % 16 == 9)  game0.init(contractCounter+1,'NS',true,true,0,'pass', false, false, 20, 6)
-                      else if (contractCounter % 16 ==10)  game0.init(contractCounter+1,'NS',false,false,0,'pass', false, false, 20, 6)
-                      else if (contractCounter % 16 == 11) game0.init(contractCounter+1,'NS',true,false,0,'pass', false, false, 20, 6)
-                      else if (contractCounter % 16 == 12) game0.init(contractCounter+1,'NS',true,true,0,'pass', false, false, 20, 6)
-                      else if (contractCounter % 16 == 13) game0.init(contractCounter+1,'NS',false,false,0,'pass', false, false, 20, 6)
-                      else if (contractCounter % 16 == 14) game0.init(contractCounter+1,'NS',true,false,0,'pass', false, false, 20, 6)
-                      else if (contractCounter % 16 == 15) game0.init(contractCounter+1,'NS',false,true,0,'pass', false, false, 20, 6)
-                      else if (contractCounter % 16 == 0)  game0.init(contractCounter+1,'NS',false,false,0,'pass', false, false, 20, 6);
-
-                      game0.print();
-                };
-      };
-    });
+  // $('#start button').on('click',function(){
+  //     if ($(this).text() == 'SINGLE') {
+  //               mode = 'single';
+  //               $("section.matchButton").show();
+  //               $('#mask').hide();
+  //               $("section.save").hide();
+  //               $("section.singleButton").hide();
+  //               $("section.resetMatchButton").hide();
+  //     } else {
+  //               mode = 'match';
+  //               $("section.singleButton").show();
+  //               $("section.save").show();
+  //               $("section.resetMatchButton").show();
+  //               $("section.matchButton").hide();
+  //               $('#mask').hide();
+  //               if (typeof(Storage) !== "undefined") {
+  //                       $.each(localStorage, function(item){
+  //                         if (item == 'contractCounter') {
+  //                           contractCounter = parseInt(localStorage.getItem('contractCounter'));
+  //                           matchExist = true;
+  //                         };
+  //                       });
+  //
+  //               } else {
+  //                       alert('No local storage!');
+  //                       mode = 'single';
+  //                       $("section.matchButton").hide();
+  //                       $('#mask').hide();
+  //                       $("section.save").hide();
+  //                       $("section.singleButton").hide();
+  //                       $("section.resetMatchButton").hide();
+  //               };
+  //               if (matchExist == true) {
+  //                     for (var i = 1; i <= contractCounter; i++) {
+  //                       if (i<10)
+  //                           {
+  //                             if (localStorage.getItem('bridgeGame0' + i) != 'undefined') {
+  //                               contractFromLocalStorage = localStorage.getItem('bridgeGame0' + i);
+  //                             }
+  //                             else {
+  //                               contractCounter = i-1;
+  //                             };
+  //                           }
+  //                       else
+  //                           {
+  //                             if (localStorage.getItem('bridgeGame' + i) != 'undefined') {
+  //                               contractFromLocalStorage = localStorage.getItem('bridgeGame' + i);
+  //                             }
+  //                             else {
+  //                               contractCounter = i-1;
+  //                             };
+  //                           } ;
+  //
+  //                       //insertContract from local Storage
+  //                       game0.setGame(contractFromLocalStorage);
+  //                       game0.print();
+  //                       var $copy = $('section.scoreTable.navTable').eq(0).clone(true);
+  //
+  //                       $copy.removeClass('navTable').addClass('saved');
+  //                       $copy.find('.pencil').append($("<span class='edit'>EDIT</span>"));
+  //                       $copy.find('.delete').on('click',deleteSavedBar);
+  //                       $copy.find('.edit').on('click', editGame);
+  //                       // $copy.find('span.number').eq(0).text(contractFromLocalStorage[0]+contractFromLocalStorage[1]);
+  //                       $copy.appendTo($('#match'));
+  //                       $('html, body').animate({
+  //                         scrollTop: $('.saved').last().offset().top
+  //                       }, 100);
+  //
+  //                     };
+  //
+  //                     if      (contractCounter % 16 == 1)  game0.init(contractCounter+1,'NS',true,false,0,'pass', false, false, 20, 6)
+  //                     else if (contractCounter % 16 == 2)  game0.init(contractCounter+1,'NS',false,true,0,'pass', false, false, 20, 6)
+  //                     else if (contractCounter % 16 == 3)  game0.init(contractCounter+1,'NS',true,true,0,'pass', false, false, 20, 6)
+  //                     else if (contractCounter % 16 == 4)  game0.init(contractCounter+1,'NS',true,false,0,'pass', false, false, 20, 6)
+  //                     else if (contractCounter % 16 == 5)  game0.init(contractCounter+1,'NS',false,true,0,'pass', false, false, 20, 6)
+  //                     else if (contractCounter % 16 == 6)  game0.init(contractCounter+1,'NS',true,true,0,'pass', false, false, 20, 6)
+  //                     else if (contractCounter % 16 == 7)  game0.init(contractCounter+1,'NS',false,false,0,'pass', false, false, 20, 6)
+  //                     else if (contractCounter % 16 == 8)  game0.init(contractCounter+1,'NS',false,true,0,'pass', false, false, 20, 6)
+  //                     else if (contractCounter % 16 == 9)  game0.init(contractCounter+1,'NS',true,true,0,'pass', false, false, 20, 6)
+  //                     else if (contractCounter % 16 ==10)  game0.init(contractCounter+1,'NS',false,false,0,'pass', false, false, 20, 6)
+  //                     else if (contractCounter % 16 == 11) game0.init(contractCounter+1,'NS',true,false,0,'pass', false, false, 20, 6)
+  //                     else if (contractCounter % 16 == 12) game0.init(contractCounter+1,'NS',true,true,0,'pass', false, false, 20, 6)
+  //                     else if (contractCounter % 16 == 13) game0.init(contractCounter+1,'NS',false,false,0,'pass', false, false, 20, 6)
+  //                     else if (contractCounter % 16 == 14) game0.init(contractCounter+1,'NS',true,false,0,'pass', false, false, 20, 6)
+  //                     else if (contractCounter % 16 == 15) game0.init(contractCounter+1,'NS',false,true,0,'pass', false, false, 20, 6)
+  //                     else if (contractCounter % 16 == 0)  game0.init(contractCounter+1,'NS',false,false,0,'pass', false, false, 20, 6);
+  //
+  //                     game0.print();
+  //               };
+  //     };
+  //   });
 
     $('.playerName').on('click',function(){
         if ($(this).text()=='NS') {
@@ -244,6 +250,7 @@ $(document).ready(function(){
       $('section.singleButton').show();
       $('section.matchButton').hide();
       $('section.resetMatchButton').show();
+
       mode = 'match';
 
       var matchExist = false;
@@ -323,6 +330,8 @@ $(document).ready(function(){
 
             game0.print();
             resetView();
+            recountTotalSums();
+            $('span.edit').show();
       };
 
     });
@@ -333,6 +342,7 @@ $(document).ready(function(){
       $('section.matchButton').show();
       $('section.resetMatchButton').hide();
       mode = 'single';
+      $('span.edit').hide();
     });
 
     $('.save h1').on('click',function(){
