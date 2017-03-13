@@ -221,7 +221,7 @@ footer {
   width:100%;
   height: $headerHight;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   position : fixed;
   bottom: 0;
@@ -232,6 +232,9 @@ footer {
   section {
     height : $headerHight - 6px;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
 }
@@ -523,8 +526,10 @@ div[data-contract='0_pass'] {
   }
   .save h1, .matchButton h1, .singleButton h1, .resetMatchButton h1
   {
-    font-size: 12px;
+    font-size: 16px;
     background: inherit;
+    margin-top :0;
+    margin-bottom :0;
     &:hover {
       background: inherit;
     }
