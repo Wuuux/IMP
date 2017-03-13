@@ -504,7 +504,7 @@ $(document).ready(function(){
 
 
       editStatus = true;
-      $('.save h1').text('SAVE (nr: '+game0.nr+')');
+      $('.save h1').html('SAVE<br> (nr: '+game0.nr+')');
       $('.edit').hide();
       $('.delete').hide();
       $('section.singleButton').hide();

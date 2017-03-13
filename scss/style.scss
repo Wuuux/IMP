@@ -59,6 +59,13 @@ section.player {
   height: $headerHight;
   border-top: 1px solid lightgrey;
   border-bottom: 1px solid lightgrey;
+
+  &.navTable {
+    padding-top: 7px;
+  }
+  &.saved {
+    padding-top: 3px;
+  }
   div {
     float: left;
   }
@@ -140,6 +147,8 @@ section.player {
       text-align: left;
       top: 0.1em;
       font-size: 1.5em;
+      margin-right: -50px;
+      top: 12px;
 
     }
 
@@ -297,6 +306,19 @@ footer {
 
 
 .saved{
+  position: relative;
+  .pencil {
+    position: absolute;
+    bottom: 5px;
+    right: 15px;
+
+  }
+  .impPlace {
+    position: absolute;
+    top: 5px;
+    right: 0;
+    margin-right: -65px;
+  }
   .glyphicon {
     &:hover {
       color : yellow;
@@ -449,7 +471,8 @@ footer {
       color : red;
     }
     .edit {
-      color : blue;
+      color : lightgrey;
+      font-size: 16px;
     }
     .impPlace {
       position: static;
@@ -533,5 +556,11 @@ div[data-contract='0_pass'] {
     &:hover {
       background: inherit;
     }
+  }
+  #match .scoreTable {
+    font-size: 14px;
+  }
+  .scoreTable.navTable {
+    font-size: 18px;
   }
 }
