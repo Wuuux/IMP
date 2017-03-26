@@ -517,6 +517,8 @@ function overtricksValue(vulnarability, levelContract, colorContract, double, tr
 
   function imp(_playerVulnarable, _oponentVulnarable, _levelContract, _colorContract, _points, _tricks, _double){
 
+    // player('vulnarable', 'notVulnarable'), oponent('vulnarable', 'notVulnarable'), level(0,1,2,3,4,5,6,7), color('pass','clubs','diams','hearts','spades','NT'), points(0-40), tricks(0-13), double('notdouble', 'double', 'redouble')
+
     var playerPointsToWin;
     var oponentPointsToWin;
     var wonPoints;
